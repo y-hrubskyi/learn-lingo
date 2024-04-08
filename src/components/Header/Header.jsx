@@ -1,3 +1,5 @@
+import { Navigation } from "@/components/Navigation/Navigation";
+
 import * as SC from "./Header.styled";
 
 export const Header = () => {
@@ -7,6 +9,7 @@ export const Header = () => {
         <SC.LogoIcon />
         LearnLingo
       </SC.Logo>
+      <Navigation />
     </SC.Header>
   );
 };
