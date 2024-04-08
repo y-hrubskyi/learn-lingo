@@ -1,5 +1,10 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 export const Layout = () => {
-  return <Outlet />;
+  return (
+    <Suspense>
+      <Outlet />
+    </Suspense>
+  );
 };
