@@ -59,4 +59,5 @@ export const LogoutBtn = styled.button`
 export const LogoutIcon = styled(LogoutSVG)`
   width: 20px;
   height: 20px;
+  stroke: ${(p) => p.theme.colors.accent};
 `;

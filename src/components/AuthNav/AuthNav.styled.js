@@ -32,6 +32,7 @@ export const LoginBtn = styled.button`
 export const LoginIcon = styled(LoginSVG)`
   width: 20px;
   height: 20px;
+  stroke: ${(p) => p.theme.colors.accent};
 `;
 
 export const RegisterBtn = styled.button`
