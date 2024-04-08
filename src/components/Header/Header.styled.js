@@ -21,6 +21,13 @@ export const Logo = styled(Link)`
   letter-spacing: -0.02em;
   color: ${(p) => p.theme.colors.primary()};
   text-decoration: none;
+
+  transition: ${(p) => p.theme.transition("color")};
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.accent};
+  }
 `;
 
 export const LogoIcon = styled(LogoSVG)`

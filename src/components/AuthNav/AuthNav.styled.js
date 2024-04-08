@@ -20,6 +20,13 @@ export const LoginBtn = styled.button`
 
   background-color: transparent;
   border: none;
+
+  transition: ${(p) => p.theme.transition("color")};
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.accent};
+  }
 `;
 
 export const LoginIcon = styled(LoginSVG)`
@@ -38,4 +45,11 @@ export const RegisterBtn = styled.button`
 
   background-color: ${(p) => p.theme.colors.primary()};
   border: none;
+
+  transition: ${(p) => p.theme.transition("color")};
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.accent};
+  }
 `;

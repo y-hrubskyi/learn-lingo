@@ -13,4 +13,11 @@ export const NavLink = styled(Link)`
   line-height: 1.25;
   text-decoration: none;
   color: ${(p) => p.theme.colors.primary()};
+
+  transition: ${(p) => p.theme.transition("color")};
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.accent};
+  }
 `;

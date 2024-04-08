@@ -47,6 +47,13 @@ export const LogoutBtn = styled.button`
 
   background-color: transparent;
   border: none;
+
+  transition: ${(p) => p.theme.transition("color")};
+
+  &:hover,
+  &:focus {
+    color: ${(p) => p.theme.colors.accent};
+  }
 `;
 
 export const LogoutIcon = styled(LogoutSVG)`
