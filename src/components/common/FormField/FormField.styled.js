@@ -27,6 +27,6 @@ export const Field = styled(FormikField)`
 `;
 
 export const ErrorMessage = styled(FormikError)`
-  color: ${(p) => p.theme.colors.red};
+  color: red;
   font-size: 14px;
 `;
