@@ -13,6 +13,7 @@ const baseTheme = Object.freeze({
     select: "14px",
     card: "24px",
     modal: "30px",
+    avatar: "100px",
   },
   transition: (prop = "") => `${prop} 250ms linear`,
   spacing: (value) => `${value * 4}px`,
