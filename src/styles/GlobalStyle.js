@@ -51,6 +51,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: ${(p) =>
+      p.theme.colors[p.locationPath === "/" ? "primaryBg" : "secondaryBg"]};
   }
   
   h1,
