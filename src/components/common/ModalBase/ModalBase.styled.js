@@ -34,8 +34,8 @@ export const Modal = styled.div`
   }
 
   &::-webkit-scrollbar-track {
-    margin-top: 14px;
-    margin-bottom: 14px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     background: transparent;
   }
 

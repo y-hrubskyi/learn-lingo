@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import { BookModal } from "@/components/BookModal/BookModal";
 import * as SC from "./TeacherItem.styled";
 
 const mapListWithSeparator = (arr, separator) =>
@@ -9,9 +10,18 @@ const mapListWithSeparator = (arr, separator) =>
 
 export const TeacherItem = ({ teacher }) => {
   const [readMore, setReadMore] = useState(false);
+  const [isBookOpen, setIsBookOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isBookOpen ? "hidden" : "unset";
+  }, [isBookOpen]);
 
   const handleReadMore = () => {
     setReadMore(true);
+  };
+
+  const toggleBookModal = () => {
+    setIsBookOpen((prevState) => !prevState);
   };
 
   return (
@@ -112,11 +122,19 @@ export const TeacherItem = ({ teacher }) => {
           ))}
         </SC.LevelList>
         {readMore && (
-          <SC.ActionBtn type="button" onClick={() => {}}>
+          <SC.ActionBtn type="button" onClick={toggleBookModal}>
             Book trial lesson
           </SC.ActionBtn>
         )}
       </SC.TeacherInfoWrapper>
+      {isBookOpen && (
+        <BookModal
+          onClose={toggleBookModal}
+          teacherName={teacher.name}
+          teacherSurname={teacher.surname}
+          teacherAvatar={teacher.avatar_url}
+        />
+      )}
     </SC.TeacherCard>
   );
 };
