@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Themes } from "@/styles/theme";
 
 import * as SC from "./ThemeModal.styled";
+import { saveTheme } from "@/services/localStorage";
 
 export const ThemeModal = ({ onClose, onThemeSelect }) => {
   useEffect(() => {
@@ -25,6 +26,11 @@ export const ThemeModal = ({ onClose, onThemeSelect }) => {
     }
   };
 
+  const handleThemeSelect = (themeName) => {
+    onThemeSelect(themeName);
+    saveTheme(themeName);
+  };
+
   return (
     <SC.Backdrop onClick={handleOverlayClick}>
       <SC.Modal>
@@ -32,7 +38,7 @@ export const ThemeModal = ({ onClose, onThemeSelect }) => {
           <SC.ThemeColor
             key={theme}
             type="button"
-            onClick={() => onThemeSelect(Themes[theme].name)}
+            onClick={() => handleThemeSelect(Themes[theme].name)}
             data-theme-color={Themes[theme].accent}
           />
         ))}

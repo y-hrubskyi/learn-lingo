@@ -2,6 +2,7 @@ import { Suspense, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
+import { getInitialTheme } from "@/services/localStorage";
 import { getTheme } from "@/styles/theme";
 
 import { GlobalStyle } from "@/styles/GlobalStyle";
@@ -11,7 +12,7 @@ import { ThemeModal } from "@/components/ThemeModal/ThemeModal";
 import * as SC from "./Layout.styled";
 
 export const Layout = () => {
-  const [theme, setTheme] = useState("yellow");
+  const [theme, setTheme] = useState(getInitialTheme);
   const [isThemePopupOpen, setisThemePopupOpen] = useState(false);
   const location = useLocation();
 
