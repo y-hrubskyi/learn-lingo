@@ -71,7 +71,7 @@ export const ReasonRadioLabel = styled.label`
   cursor: pointer;
 
   &:hover input:not(:checked) + div {
-    background-color: #fbe9ba;
+    background-color: ${(p) => p.theme.colors.hover};
   }
 `;
 
@@ -90,11 +90,11 @@ export const ReasonRadioField = styled(Field)`
   overflow: hidden;
 
   &:checked + div {
-    border-color: #f4c550;
+    border-color: ${(p) => p.theme.colors.accent};
   }
 
   &:checked + div::after {
-    background-color: #f4c550;
+    background-color: ${(p) => p.theme.colors.accent};
   }
 `;
 

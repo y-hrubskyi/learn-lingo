@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
+import { saveTheme } from "@/services/localStorage";
 import { Themes } from "@/styles/theme";
 
 import * as SC from "./ThemeModal.styled";
-import { saveTheme } from "@/services/localStorage";
 
 export const ThemeModal = ({ onClose, onThemeSelect }) => {
   useEffect(() => {
