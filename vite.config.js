@@ -12,6 +12,7 @@ export default defineConfig({
       "@/components": "/src/components",
       "@/constants": "/src/constants",
       "@/pages": "/src/pages",
+      "@/services": "/src/services",
       "@/styles": "/src/styles",
     },
   },

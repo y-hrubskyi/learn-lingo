@@ -19,52 +19,97 @@ const baseTheme = Object.freeze({
   spacing: (value) => `${value * 4}px`,
 });
 
-export const yellowTheme = {
-  ...baseTheme,
-  name: "yellow",
-  colors: {
-    ...baseTheme.colors,
+export const Themes = Object.freeze({
+  YELLOW: {
+    name: "yellow",
     accent: "#f4c550",
     hover: "#fbe9ba",
   },
-};
-
-export const greenTheme = {
-  ...baseTheme,
-  name: "green",
-  colors: {
-    ...baseTheme.colors,
+  GREEN: {
+    name: "green",
     accent: "#9fbaae",
     hover: "#cbded3",
   },
-};
-
-export const blueTheme = {
-  ...baseTheme,
-  name: "blue",
-  colors: {
-    ...baseTheme.colors,
+  BLUE: {
+    name: "blue",
     accent: "#9fb7ce",
     hover: "#bfd6ea",
   },
-};
-
-export const coralTheme = {
-  ...baseTheme,
-  name: "coral",
-  colors: {
-    ...baseTheme.colors,
+  CORAL: {
+    name: "coral",
     accent: "#e0a39a",
     hover: "#f2c0bd",
   },
-};
-
-export const peachTheme = {
-  ...baseTheme,
-  name: "peach",
-  colors: {
-    ...baseTheme.colors,
+  PEACH: {
+    name: "peach",
     accent: "#f0aa8d",
     hover: "#f4c8ba",
   },
+});
+
+const yellowTheme = {
+  ...baseTheme,
+  name: Themes.YELLOW.name,
+  colors: {
+    ...baseTheme.colors,
+    accent: Themes.YELLOW.accent,
+    hover: Themes.YELLOW.hover,
+  },
+};
+
+const greenTheme = {
+  ...baseTheme,
+  name: Themes.GREEN.name,
+  colors: {
+    ...baseTheme.colors,
+    accent: Themes.GREEN.accent,
+    hover: Themes.GREEN.hover,
+  },
+};
+
+const blueTheme = {
+  ...baseTheme,
+  name: Themes.BLUE.name,
+  colors: {
+    ...baseTheme.colors,
+    accent: Themes.BLUE.accent,
+    hover: Themes.BLUE.hover,
+  },
+};
+
+const coralTheme = {
+  ...baseTheme,
+  name: Themes.CORAL.name,
+  colors: {
+    ...baseTheme.colors,
+    accent: Themes.CORAL.accent,
+    hover: Themes.CORAL.hover,
+  },
+};
+
+const peachTheme = {
+  ...baseTheme,
+  name: Themes.PEACH.name,
+  colors: {
+    ...baseTheme.colors,
+    accent: Themes.PEACH.accent,
+    hover: Themes.PEACH.hover,
+  },
+};
+
+export const getTheme = (themeName) => {
+  switch (themeName) {
+    case Themes.YELLOW.name:
+      return yellowTheme;
+    case Themes.GREEN.name:
+      return greenTheme;
+    case Themes.BLUE.name:
+      return blueTheme;
+    case Themes.CORAL.name:
+      return coralTheme;
+    case Themes.PEACH.name:
+      return peachTheme;
+    default:
+      return yellowTheme;
+  }
 };
