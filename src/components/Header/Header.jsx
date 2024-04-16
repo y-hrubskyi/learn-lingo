@@ -1,3 +1,5 @@
+import { useAuth } from "@/hooks/useAuth";
+
 import { Navigation } from "@/components/Navigation/Navigation";
 import { AuthNav } from "@/components/AuthNav/AuthNav";
 import { UserMenu } from "@/components/UserMenu/UserMenu";
@@ -5,6 +7,8 @@ import { UserMenu } from "@/components/UserMenu/UserMenu";
 import * as SC from "./Header.styled";
 
 export const Header = () => {
+  const { currentUser } = useAuth();
+
   return (
     <SC.Header>
       <SC.Logo to="/">
@@ -12,8 +16,7 @@ export const Header = () => {
         LearnLingo
       </SC.Logo>
       <Navigation />
-      <AuthNav />
-      <UserMenu />
+      {currentUser ? <UserMenu /> : <AuthNav />}
     </SC.Header>
   );
 };
