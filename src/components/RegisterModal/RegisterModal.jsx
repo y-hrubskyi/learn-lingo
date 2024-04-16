@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { useAuth } from "@/hooks/useAuth";
 import { registerSchema } from "@/constants/validation/registerSchema";
 
 import { ModalBase } from "@/components/common/ModalBase/ModalBase";
@@ -20,10 +21,20 @@ const initialValues = {
 };
 
 export const RegisterModal = ({ onClose }) => {
+  const { signUp, updateUser } = useAuth();
   const [passwordShown, setPasswordShown] = useState(false);
 
   const togglePasswordShown = () => {
     setPasswordShown((prevState) => !prevState);
+  };
+
+  const handleSubmit = async (values) => {
+    try {
+      await signUp(values.email, values.password);
+      await updateUser({ displayName: values.name });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -35,7 +46,7 @@ export const RegisterModal = ({ onClose }) => {
       </BaseModalDescription>
       <FormBase
         initialValues={initialValues}
-        onSubmit={() => {}}
+        onSubmit={handleSubmit}
         validationSchema={registerSchema}
       >
         <FieldsWrapper>
