@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { useAuth } from "@/hooks/useAuth";
 import { loginSchema } from "@/constants/validation/loginSchema";
 
 import { ModalBase } from "@/components/common/ModalBase/ModalBase";
@@ -19,10 +20,19 @@ const initialValues = {
 };
 
 export const LoginModal = ({ onClose }) => {
+  const { logIn } = useAuth();
   const [passwordShown, setPasswordShown] = useState(false);
 
   const togglePasswordShown = () => {
     setPasswordShown((prevState) => !prevState);
+  };
+
+  const handleSubmit = async (values) => {
+    try {
+      await logIn(values.email, values.password);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -34,7 +44,7 @@ export const LoginModal = ({ onClose }) => {
       </BaseModalDescription>
       <FormBase
         initialValues={initialValues}
-        onSubmit={() => {}}
+        onSubmit={handleSubmit}
         validationSchema={loginSchema}
       >
         <FieldsWrapper>

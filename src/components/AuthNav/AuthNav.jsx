@@ -11,6 +11,10 @@ export const AuthNav = () => {
   useEffect(() => {
     document.body.style.overflow =
       isLoginOpen || isRegisterOpen ? "hidden" : "unset";
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isLoginOpen, isRegisterOpen]);
 
   const toggleLoginModal = () => {
