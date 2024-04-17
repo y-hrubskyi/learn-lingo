@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase } from "firebase/database";
+import { get, getDatabase, ref } from "firebase/database";
 
 const {
   VITE_FIREBASE_API_KEY: API_KEY,
@@ -26,4 +26,10 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-export const db = getDatabase(app);
+const db = getDatabase(app);
+const teachersRef = ref(db, "/teachers");
+
+export const getTeachers = async () => {
+  const snapshot = await get(teachersRef);
+  return snapshot.val();
+};
