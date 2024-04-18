@@ -1,6 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { get, getDatabase, ref } from "firebase/database";
+import {
+  get,
+  getDatabase,
+  limitToFirst,
+  orderByKey,
+  query,
+  ref,
+  startAfter,
+} from "firebase/database";
 
 const {
   VITE_FIREBASE_API_KEY: API_KEY,
@@ -29,7 +37,12 @@ export const auth = getAuth(app);
 const db = getDatabase(app);
 const teachersRef = ref(db, "/teachers");
 
-export const getTeachers = async () => {
-  const snapshot = await get(teachersRef);
+export const getTeachers = async (lastKey) => {
+  let myQuery = query(teachersRef, orderByKey(), limitToFirst(4));
+  if (lastKey) {
+    myQuery = query(myQuery, startAfter(lastKey));
+  }
+
+  const snapshot = await get(myQuery);
   return snapshot.val();
 };
