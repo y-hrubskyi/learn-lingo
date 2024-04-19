@@ -7,7 +7,9 @@ import {
   orderByKey,
   query,
   ref,
+  remove,
   startAfter,
+  update,
 } from "firebase/database";
 
 const {
@@ -48,4 +50,14 @@ export const getTeachers = async (lastKey) => {
 
   const snapshot = await get(myQuery);
   return snapshot.val();
+};
+
+export const addToFavorites = (userId, teacherId) => {
+  update(ref(db, `/favorites/${userId}`), {
+    [teacherId]: true,
+  });
+};
+
+export const removeFromFavorites = (userId, teacherId) => {
+  remove(ref(db, `/favorites/${userId}/${teacherId}`));
 };
