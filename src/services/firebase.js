@@ -35,9 +35,12 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 const db = getDatabase(app);
-const teachersRef = ref(db, "/teachers");
+
+export const createRef = (path) => ref(db, path);
 
 export const getTeachers = async (lastKey) => {
+  const teachersRef = createRef("/teachers");
+
   let myQuery = query(teachersRef, orderByKey(), limitToFirst(4));
   if (lastKey) {
     myQuery = query(myQuery, startAfter(lastKey));
