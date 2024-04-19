@@ -4,10 +4,13 @@ import {
   get,
   getDatabase,
   limitToFirst,
+  onValue,
   orderByKey,
   query,
   ref,
+  remove,
   startAfter,
+  update,
 } from "firebase/database";
 
 const {
@@ -35,9 +38,12 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 const db = getDatabase(app);
-const teachersRef = ref(db, "/teachers");
+
+export const createRef = (path) => ref(db, path);
 
 export const getTeachers = async (lastKey) => {
+  const teachersRef = createRef("/teachers");
+
   let myQuery = query(teachersRef, orderByKey(), limitToFirst(4));
   if (lastKey) {
     myQuery = query(myQuery, startAfter(lastKey));
@@ -45,4 +51,44 @@ export const getTeachers = async (lastKey) => {
 
   const snapshot = await get(myQuery);
   return snapshot.val();
+};
+
+export const subscribeFavoriteKeys = (userId, setKeys) => {
+  const ref = createRef(`/favorites/${userId}`);
+
+  return onValue(ref, (snapshot) => {
+    const items = snapshot.val();
+    const nextItems = items && Object.keys(items);
+    setKeys(nextItems);
+  });
+};
+
+export const subscribeFavoriteItems = (userId, setItems) => {
+  const ref = createRef(`/favorites/${userId}`);
+
+  return onValue(ref, async (snapshot) => {
+    const items = snapshot.val();
+    if (!items) return setItems(null);
+
+    const promises = Object.keys(items).map((itemId) => {
+      return get(createRef(`/teachers/${itemId}`));
+    });
+    const snapshots = await Promise.all(promises);
+
+    const itemsData = {};
+    snapshots.forEach((snapshot) => (itemsData[snapshot.key] = snapshot.val()));
+
+    const nextItemsData = itemsData && Object.entries(itemsData);
+    setItems(nextItemsData);
+  });
+};
+
+export const addToFavorites = (userId, teacherId) => {
+  update(ref(db, `/favorites/${userId}`), {
+    [teacherId]: true,
+  });
+};
+
+export const removeFromFavorites = (userId, teacherId) => {
+  remove(ref(db, `/favorites/${userId}/${teacherId}`));
 };

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { addToFavorites, removeFromFavorites } from "@/services/firebase";
+
 import { BookModal } from "@/components/BookModal/BookModal";
 import * as SC from "./TeacherItem.styled";
 
@@ -8,13 +10,23 @@ const mapListWithSeparator = (arr, separator) =>
     index === array.length - 1 ? item : item + separator
   );
 
-export const TeacherItem = ({ teacher }) => {
+export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
   const [readMore, setReadMore] = useState(false);
   const [isBookOpen, setIsBookOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = isBookOpen ? "hidden" : "unset";
   }, [isBookOpen]);
+
+  const handleFavoriteClick = () => {
+    if (!userId) return;
+
+    if (isFavorite) {
+      removeFromFavorites(userId, teacherId);
+    } else {
+      addToFavorites(userId, teacherId);
+    }
+  };
 
   const handleReadMore = () => {
     setReadMore(true);
@@ -60,8 +72,8 @@ export const TeacherItem = ({ teacher }) => {
                 </SC.Info>
               </SC.TeacherInfo>
             </SC.AboutTeacher>
-            <SC.HeartBtn type="button" onClick={() => {}}>
-              <SC.HeartIcon />
+            <SC.HeartBtn type="button" onClick={handleFavoriteClick}>
+              <SC.HeartIcon data-is-favorite={isFavorite} />
             </SC.HeartBtn>
           </SC.RightHeaderBlock>
         </SC.HeaderContent>
