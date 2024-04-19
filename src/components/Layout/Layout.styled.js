@@ -13,6 +13,7 @@ export const ThemeWrapper = styled.div`
   position: fixed;
   top: 5%;
   right: 5%;
+  z-index: 100;
 `;
 
 export const ThemeBtn = styled.button`
