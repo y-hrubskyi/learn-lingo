@@ -24,7 +24,9 @@ export const TeacherList = ({ teachers }) => {
         <TeacherItem
           key={key}
           teacher={teacher}
+          teacherId={key}
           isFavorite={currentUser && favoriteKeys?.includes(key)}
+          userId={currentUser?.uid}
         />
       ))}
     </SC.TeacherList>
