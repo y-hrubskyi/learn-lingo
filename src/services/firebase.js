@@ -57,29 +57,43 @@ export const subscribeFavoriteKeys = (userId, setKeys) => {
   const ref = createRef(`/favorites/${userId}`);
 
   return onValue(ref, (snapshot) => {
-    const items = snapshot.val();
-    const nextItems = items && Object.keys(items);
-    setKeys(nextItems);
+    const keys = snapshot.val();
+    const nextKeys = keys && Object.keys(keys);
+    setKeys(nextKeys);
   });
 };
 
-export const subscribeFavoriteItems = (userId, setItems) => {
+export const subscribeFavoriteItems = (
+  userId,
+  setItems,
+  setIsLoading,
+  setError
+) => {
+  setIsLoading(true);
+  setError(null);
+
   const ref = createRef(`/favorites/${userId}`);
 
   return onValue(ref, async (snapshot) => {
-    const items = snapshot.val();
-    if (!items) return setItems(null);
+    try {
+      const keys = snapshot.val();
+      if (!keys) return setItems(null);
 
-    const promises = Object.keys(items).map((itemId) => {
-      return get(createRef(`/teachers/${itemId}`));
-    });
-    const snapshots = await Promise.all(promises);
+      const itemsPromises = Object.keys(keys).map((itemId) => {
+        return get(createRef(`/teachers/${itemId}`));
+      });
+      const snapshots = await Promise.all(itemsPromises);
 
-    const itemsData = {};
-    snapshots.forEach((snapshot) => (itemsData[snapshot.key] = snapshot.val()));
+      const items = {};
+      snapshots.forEach((snapshot) => (items[snapshot.key] = snapshot.val()));
 
-    const nextItemsData = itemsData && Object.entries(itemsData);
-    setItems(nextItemsData);
+      const nextItems = items && Object.entries(items);
+      setItems(nextItems);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   });
 };
 
