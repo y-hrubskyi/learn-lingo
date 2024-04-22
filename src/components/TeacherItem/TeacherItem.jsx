@@ -23,7 +23,10 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
 
   const handleFavoriteClick = async () => {
     try {
-      if (!userId) return;
+      if (!userId)
+        return toast.error(
+          <ToastMessage>Available only for logged in user</ToastMessage>
+        );
 
       setIsFavoriteActionLoading(true);
 
