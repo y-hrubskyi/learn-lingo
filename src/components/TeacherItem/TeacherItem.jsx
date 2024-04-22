@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import { addToFavorites, removeFromFavorites } from "@/services/firebase";
 
 import { BookModal } from "@/components/BookModal/BookModal";
+import { ToastMessage } from "@/components/common/ToastMessage/ToastMessage.styled";
 import * as SC from "./TeacherItem.styled";
 
 const mapListWithSeparator = (arr, separator) =>
@@ -13,18 +15,38 @@ const mapListWithSeparator = (arr, separator) =>
 export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
   const [readMore, setReadMore] = useState(false);
   const [isBookOpen, setIsBookOpen] = useState(false);
+  const [isFavoriteActionLoading, setIsFavoriteActionLoading] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = isBookOpen ? "hidden" : "unset";
   }, [isBookOpen]);
 
-  const handleFavoriteClick = () => {
-    if (!userId) return;
+  const handleFavoriteClick = async () => {
+    try {
+      if (!userId) return;
 
-    if (isFavorite) {
-      removeFromFavorites(userId, teacherId);
-    } else {
-      addToFavorites(userId, teacherId);
+      setIsFavoriteActionLoading(true);
+
+      let favoriteActionPromise, loadingMessage, resultMessage;
+      if (isFavorite) {
+        favoriteActionPromise = removeFromFavorites(userId, teacherId);
+        loadingMessage = "Removing...";
+        resultMessage = "Removed from favorites";
+      } else {
+        favoriteActionPromise = addToFavorites(userId, teacherId);
+        loadingMessage = "Adding...";
+        resultMessage = "Added to favorites";
+      }
+
+      await toast.promise(favoriteActionPromise, {
+        loading: <ToastMessage>{loadingMessage}</ToastMessage>,
+        success: <ToastMessage>{resultMessage}</ToastMessage>,
+        error: <ToastMessage>Oops.. Something went wrong</ToastMessage>,
+      });
+    } catch (error) {
+      // handled in toast.promise
+    } finally {
+      setIsFavoriteActionLoading(false);
     }
   };
 
@@ -72,7 +94,11 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
                 </SC.Info>
               </SC.TeacherInfo>
             </SC.AboutTeacher>
-            <SC.HeartBtn type="button" onClick={handleFavoriteClick}>
+            <SC.HeartBtn
+              type="button"
+              onClick={handleFavoriteClick}
+              disabled={isFavoriteActionLoading}
+            >
               <SC.HeartIcon data-is-favorite={isFavorite} />
             </SC.HeartBtn>
           </SC.RightHeaderBlock>

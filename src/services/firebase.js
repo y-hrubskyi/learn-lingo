@@ -84,11 +84,11 @@ export const subscribeFavoriteItems = (userId, setItems) => {
 };
 
 export const addToFavorites = (userId, teacherId) => {
-  update(ref(db, `/favorites/${userId}`), {
+  return update(ref(db, `/favorites/${userId}`), {
     [teacherId]: true,
   });
 };
 
 export const removeFromFavorites = (userId, teacherId) => {
-  remove(ref(db, `/favorites/${userId}/${teacherId}`));
+  return remove(ref(db, `/favorites/${userId}/${teacherId}`));
 };
