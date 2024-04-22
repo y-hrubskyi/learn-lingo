@@ -27,11 +27,14 @@ export const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const updateUser = (data) => {
-    return updateProfile(auth.currentUser, data);
+  const updateUser = async (data) => {
+    await updateProfile(auth.currentUser, data);
+    setCurrentUser({ ...auth.currentUser });
   };
 
   useEffect(() => {
+    setIsRefreshing(true);
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setIsRefreshing(false);
