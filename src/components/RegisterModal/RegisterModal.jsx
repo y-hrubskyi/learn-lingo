@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 import { useAuth } from "@/hooks/useAuth";
 import { registerSchema } from "@/constants/validation/registerSchema";
@@ -13,6 +14,7 @@ import { FieldsWrapper } from "@/components/common/FormBase/FormBase.styled";
 import { FormField } from "@/components/common/FormField/FormField";
 import { PasswordField } from "@/components/common/PasswordField/PasswordField";
 import { SubmitBtn } from "@/components/common/SubmitBtn/SubmitBtn";
+import { ToastMessage } from "@/components/common/ToastMessage/ToastMessage.styled";
 
 const initialValues = {
   name: "",
@@ -22,6 +24,7 @@ const initialValues = {
 
 export const RegisterModal = ({ onClose }) => {
   const { signUp, updateUser } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
 
   const togglePasswordShown = () => {
@@ -30,10 +33,22 @@ export const RegisterModal = ({ onClose }) => {
 
   const handleSubmit = async (values) => {
     try {
-      await signUp(values.email, values.password);
-      await updateUser({ displayName: values.name });
+      setIsLoading(true);
+
+      const registrationPromise = (async () => {
+        await signUp(values.email, values.password);
+        return updateUser({ displayName: values.name });
+      })();
+
+      await toast.promise(registrationPromise, {
+        loading: <ToastMessage>Registering...</ToastMessage>,
+        success: <ToastMessage>Registration successful!</ToastMessage>,
+        error: <ToastMessage>Registration failed. Try again.</ToastMessage>,
+      });
     } catch (error) {
-      console.error(error);
+      // handled in toast.promise
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -60,7 +75,7 @@ export const RegisterModal = ({ onClose }) => {
             onTogglePasswordShown={togglePasswordShown}
           />
         </FieldsWrapper>
-        <SubmitBtn>Sign Up</SubmitBtn>
+        <SubmitBtn isLoading={isLoading}>Sign Up</SubmitBtn>
       </FormBase>
     </ModalBase>
   );

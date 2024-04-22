@@ -1,6 +1,7 @@
 import { Suspense, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { Toaster } from "react-hot-toast";
 
 import { getInitialTheme } from "@/services/localStorage";
 import { getTheme } from "@/styles/theme";
@@ -13,17 +14,18 @@ import * as SC from "./Layout.styled";
 
 export const Layout = () => {
   const [theme, setTheme] = useState(getInitialTheme);
-  const [isThemePopupOpen, setisThemePopupOpen] = useState(false);
+  const [isThemePopupOpen, setIsThemePopupOpen] = useState(false);
   const location = useLocation();
 
   const toggleThemePopup = () => {
-    setisThemePopupOpen((prevState) => !prevState);
+    setIsThemePopupOpen((prevState) => !prevState);
   };
 
   return (
     <ThemeProvider theme={getTheme(theme)}>
       <SC.Container>
         <GlobalStyle locationPath={location.pathname} />
+        <Toaster />
 
         <SC.ThemeWrapper>
           <SC.ThemeBtn type="button" onClick={toggleThemePopup}>
