@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 import { addToFavorites, removeFromFavorites } from "@/services/firebase";
@@ -16,10 +16,6 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
   const [readMore, setReadMore] = useState(false);
   const [isBookOpen, setIsBookOpen] = useState(false);
   const [isFavoriteActionLoading, setIsFavoriteActionLoading] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = isBookOpen ? "hidden" : "unset";
-  }, [isBookOpen]);
 
   const handleFavoriteClick = async () => {
     try {
@@ -178,6 +174,7 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
 
       {isBookOpen && (
         <BookModal
+          isOpen={isBookOpen}
           onClose={toggleBookModal}
           teacherName={teacher.name}
           teacherSurname={teacher.surname}

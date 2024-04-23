@@ -22,7 +22,7 @@ const initialValues = {
   password: "",
 };
 
-export const RegisterModal = ({ onClose, onCloseMobileMenu }) => {
+export const RegisterModal = ({ isOpen, onClose, onCloseMobileMenu }) => {
   const { signUp, updateUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
@@ -54,7 +54,7 @@ export const RegisterModal = ({ onClose, onCloseMobileMenu }) => {
   };
 
   return (
-    <ModalBase onClose={onClose} width="566px">
+    <ModalBase isOpen={isOpen} onClose={onClose} width="566px">
       <BaseModalTitle>Registration</BaseModalTitle>
       <BaseModalDescription>
         Thank you for your interest in our platform! In order to register, we

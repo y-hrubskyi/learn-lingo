@@ -1,36 +1,31 @@
-import { useEffect } from "react";
+import Modal from "react-modal";
 
 import * as SC from "./ModalBase.styled";
 
-export const ModalBase = ({ onClose, children, width }) => {
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.code === "Escape") {
-        onClose();
-      }
-    };
+Modal.setAppElement("#root");
 
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose]);
-
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
+export const ModalBase = ({ isOpen, onClose, width, children }) => {
   return (
-    <SC.Backdrop onClick={handleOverlayClick}>
-      <SC.Modal data-width={width}>
-        <SC.CloseBtn type="button" onClick={onClose}>
-          <SC.CrossIcon />
-        </SC.CloseBtn>
-        {children}
-      </SC.Modal>
-    </SC.Backdrop>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      onAfterOpen={() => (document.body.style.overflow = "hidden")}
+      onAfterClose={() => (document.body.style.overflow = "unset")}
+      className="_"
+      overlayClassName="_"
+      contentElement={(props, children) => (
+        <SC.Modal data-width={width} {...props}>
+          {children}
+        </SC.Modal>
+      )}
+      overlayElement={(props, contentElement) => (
+        <SC.Backdrop {...props}>{contentElement}</SC.Backdrop>
+      )}
+    >
+      <SC.CloseBtn type="button" onClick={onClose}>
+        <SC.CrossIcon />
+      </SC.CloseBtn>
+      {children}
+    </Modal>
   );
 };

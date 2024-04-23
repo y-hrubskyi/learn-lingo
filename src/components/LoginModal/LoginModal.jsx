@@ -21,7 +21,7 @@ const initialValues = {
   password: "",
 };
 
-export const LoginModal = ({ onClose, onCloseMobileMenu }) => {
+export const LoginModal = ({ isOpen, onClose, onCloseMobileMenu }) => {
   const { logIn } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
@@ -50,7 +50,7 @@ export const LoginModal = ({ onClose, onCloseMobileMenu }) => {
   };
 
   return (
-    <ModalBase onClose={onClose} width="566px">
+    <ModalBase isOpen={isOpen} onClose={onClose} width="566px">
       <BaseModalTitle>Log In</BaseModalTitle>
       <BaseModalDescription>
         Welcome back! Please enter your credentials to access your account and
