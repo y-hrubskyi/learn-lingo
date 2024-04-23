@@ -25,7 +25,11 @@ export const Layout = () => {
     <ThemeProvider theme={getTheme(theme)}>
       <SC.Container>
         <GlobalStyle locationPath={location.pathname} />
-        <Toaster />
+        <Toaster
+          containerStyle={{
+            zIndex: 10000,
+          }}
+        />
 
         <SC.ThemeWrapper>
           <SC.ThemeBtn type="button" onClick={toggleThemePopup}>
