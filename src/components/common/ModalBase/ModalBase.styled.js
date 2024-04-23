@@ -45,7 +45,7 @@ export const Modal = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    width: ${(p) => parseInt(p["data-width"]) - 40 + "px"};
+    width: ${(p) => parseInt(p["data-width"]) - 100 + "px"};
     padding: ${(p) => p.theme.spacing(10)};
   }
 
