@@ -23,18 +23,23 @@ export const PlaceholderWrapper = styled.div`
 `;
 
 export const PlaceholderImg = styled.div`
-  width: 600px;
-  height: 480px;
+  width: 320px;
+  height: 256px;
 
   background-image: url(${getPlaceholderImg});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   border-radius: ${(p) => p.theme.radii.card};
+
+  @media screen and (min-width: 1440px) {
+    width: 600px;
+    height: 480px;
+  }
 `;
 
 export const PlaceholderText = styled.p`
-  max-width: 600px;
+  max-width: 320px;
   padding: ${(p) => p.theme.spacing(4)};
 
   font-size: 18px;
@@ -45,4 +50,8 @@ export const PlaceholderText = styled.p`
 
   background-color: ${(p) => p.theme.colors.primaryBg};
   border-radius: ${(p) => p.theme.radii.card};
+
+  @media screen and (min-width: 1440px) {
+    max-width: 600px;
+  }
 `;
