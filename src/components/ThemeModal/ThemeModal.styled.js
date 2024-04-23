@@ -14,8 +14,8 @@ export const Backdrop = styled.div`
 
 export const Modal = styled.div`
   position: absolute;
-  top: 72px;
-  right: 5.25%;
+  bottom: 80px;
+  right: 24px;
 
   display: flex;
   flex-direction: column;

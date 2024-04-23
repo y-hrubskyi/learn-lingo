@@ -26,8 +26,8 @@ export const Container = styled.div`
 
 export const ThemeWrapper = styled.div`
   position: fixed;
-  top: 5%;
-  right: 5%;
+  bottom: 20px;
+  right: 20px;
   z-index: 100;
 `;
 
