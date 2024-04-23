@@ -63,6 +63,14 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
 
   return (
     <SC.TeacherCard>
+      <SC.HeartBtn
+        type="button"
+        onClick={handleFavoriteClick}
+        disabled={isFavoriteActionLoading}
+      >
+        <SC.HeartIcon data-is-favorite={isFavorite} />
+      </SC.HeartBtn>
+
       <SC.TeacherAvatarWrapper>
         <SC.TeacherAvatar
           src={teacher.avatar_url}
@@ -70,6 +78,7 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
         />
         <SC.TeacherStatus />
       </SC.TeacherAvatarWrapper>
+
       <SC.TeacherInfoWrapper>
         <SC.HeaderContent>
           <SC.LeftHeaderBlock>
@@ -78,6 +87,7 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
               {teacher.name} {teacher.surname}
             </SC.TeacherFullName>
           </SC.LeftHeaderBlock>
+
           <SC.RightHeaderBlock>
             <SC.AboutTeacher>
               <SC.TeacherInfo>
@@ -97,15 +107,9 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
                 </SC.Info>
               </SC.TeacherInfo>
             </SC.AboutTeacher>
-            <SC.HeartBtn
-              type="button"
-              onClick={handleFavoriteClick}
-              disabled={isFavoriteActionLoading}
-            >
-              <SC.HeartIcon data-is-favorite={isFavorite} />
-            </SC.HeartBtn>
           </SC.RightHeaderBlock>
         </SC.HeaderContent>
+
         <div>
           <SC.InfoWrapper>
             <SC.Info>
@@ -123,6 +127,7 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
               {mapListWithSeparator(teacher.conditions, " ")}
             </SC.Info>
           </SC.InfoWrapper>
+
           {readMore ? (
             <div>
               <SC.Experience>{teacher.experience}</SC.Experience>
@@ -152,6 +157,7 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
             </SC.ReadMoreBtn>
           )}
         </div>
+
         <SC.LevelList>
           {teacher.levels.map((level) => (
             <SC.LevelItem
@@ -162,12 +168,14 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
             </SC.LevelItem>
           ))}
         </SC.LevelList>
+
         {readMore && (
           <SC.ActionBtn type="button" onClick={toggleBookModal}>
             Book trial lesson
           </SC.ActionBtn>
         )}
       </SC.TeacherInfoWrapper>
+
       {isBookOpen && (
         <BookModal
           onClose={toggleBookModal}
