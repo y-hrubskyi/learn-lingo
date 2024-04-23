@@ -1,6 +1,6 @@
-import * as SC from "./Hero.styled";
+import * as SC from "./HeroSection.styled";
 
-export const Hero = () => {
+export const HeroSection = () => {
   return (
     <SC.HeroSection>
       <SC.LeftWrapper>

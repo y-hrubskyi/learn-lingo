@@ -1,11 +1,11 @@
-import { Features } from "@/components/Features/Features";
-import { Hero } from "@/components/Hero/Hero";
+import { FeaturesSection } from "@/components/FeaturesSection/FeaturesSection";
+import { HeroSection } from "@/components/HeroSection/HeroSection";
 
 const HomePage = () => {
   return (
     <>
-      <Hero />
-      <Features />
+      <HeroSection />
+      <FeaturesSection />
     </>
   );
 };

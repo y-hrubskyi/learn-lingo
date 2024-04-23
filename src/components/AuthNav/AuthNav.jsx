@@ -4,7 +4,7 @@ import { RegisterModal } from "@/components/RegisterModal/RegisterModal";
 import { LoginModal } from "@/components/LoginModal/LoginModal";
 import * as SC from "./AuthNav.styled";
 
-export const AuthNav = () => {
+export const AuthNav = ({ mobileMenuOpen, onCloseMobileMenu }) => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
@@ -26,7 +26,7 @@ export const AuthNav = () => {
   };
 
   return (
-    <SC.AuthNavWrapper>
+    <SC.AuthNavWrapper data-mobile-menu-open={mobileMenuOpen}>
       <SC.LoginBtn type="button" onClick={toggleLoginModal}>
         <SC.LoginIcon />
         Log in
@@ -34,8 +34,18 @@ export const AuthNav = () => {
       <SC.RegisterBtn type="button" onClick={toggleRegisterModal}>
         Registration
       </SC.RegisterBtn>
-      {isLoginOpen && <LoginModal onClose={toggleLoginModal} />}
-      {isRegisterOpen && <RegisterModal onClose={toggleRegisterModal} />}
+      {isLoginOpen && (
+        <LoginModal
+          onClose={toggleLoginModal}
+          onCloseMobileMenu={onCloseMobileMenu}
+        />
+      )}
+      {isRegisterOpen && (
+        <RegisterModal
+          onClose={toggleRegisterModal}
+          onCloseMobileMenu={onCloseMobileMenu}
+        />
+      )}
     </SC.AuthNavWrapper>
   );
 };

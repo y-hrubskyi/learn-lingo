@@ -25,28 +25,42 @@ const chooseMacImg = ({ theme }) => {
 
 export const HeroSection = styled.section`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: ${(p) => p.theme.spacing(6)};
-  height: 530px;
 `;
 
 export const LeftWrapper = styled.div`
-  height: 100%;
-  width: 720px;
-  padding: ${(p) => p.theme.spacing(16)};
+  width: 100%;
+  padding: ${(p) => p.theme.spacing(10)};
 
   border-radius: ${(p) => p.theme.radii.modal};
   background-color: ${(p) => p.theme.colors.secondaryBg};
+
+  @media screen and (min-width: 1440px) {
+    padding: ${(p) => p.theme.spacing(24.5)} ${(p) => p.theme.spacing(16)};
+    width: 720px;
+  }
 `;
 
 export const HeroTitle = styled.h1`
-  max-width: 548px;
   margin-bottom: ${(p) => p.theme.spacing(8)};
 
+  font-size: 28px;
   font-weight: 500;
-  font-size: 48px;
   line-height: 1.16667;
   letter-spacing: -0.02em;
   color: ${(p) => p.theme.colors.primary()};
+
+  @media screen and (min-width: 768px) {
+    max-width: 440px;
+    font-size: 36px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 548px;
+    font-size: 48px;
+  }
 `;
 
 export const AccentText = styled.span`
@@ -58,18 +72,26 @@ export const AccentText = styled.span`
 
 export const HeroDescription = styled.p`
   max-width: 471px;
-  margin-bottom: ${(p) => p.theme.spacing(16)};
+  margin-bottom: ${(p) => p.theme.spacing(8)};
 
   font-weight: 400;
   font-size: 16px;
   line-height: 1.375;
   letter-spacing: -0.02em;
   color: ${(p) => p.theme.colors.primary()};
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: ${(p) => p.theme.spacing(10)};
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: ${(p) => p.theme.spacing(16)};
+  }
 `;
 
 export const GetStartedLink = styled(Link)`
-  border-radius: ${(p) => p.theme.radii.btn};
-  padding: ${(p) => p.theme.spacing(4)} ${(p) => p.theme.spacing(22)};
+  display: inline-block;
+  padding: ${(p) => p.theme.spacing(3)} ${(p) => p.theme.spacing(8)};
 
   font-weight: 700;
   font-size: 18px;
@@ -78,6 +100,7 @@ export const GetStartedLink = styled(Link)`
   color: ${(p) => p.theme.colors.primary()};
 
   background-color: ${(p) => p.theme.colors.accent};
+  border-radius: ${(p) => p.theme.radii.btn};
 
   transition: ${(p) => p.theme.transition("background-color")};
 
@@ -85,16 +108,46 @@ export const GetStartedLink = styled(Link)`
   &:focus {
     background-color: ${(p) => p.theme.colors.hover};
   }
+
+  @media screen and (min-width: 768px) {
+    padding: ${(p) => p.theme.spacing(4)} ${(p) => p.theme.spacing(16)};
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: ${(p) => p.theme.spacing(4)} ${(p) => p.theme.spacing(22)};
+  }
 `;
 
 export const RightWrapper = styled.div`
-  height: 100%;
-  width: 568px;
+  height: 262px;
+  width: 280px;
 
   border-radius: ${(p) => p.theme.radii.modal};
   background-color: ${(p) => p.theme.colors.hover};
 
   background-image: url(${chooseMacImg}), url(${GirlImg});
-  background-position: center bottom, center top 80px;
+  background-position: center bottom, center top 16px;
   background-repeat: no-repeat, no-repeat;
+  background-size: 80%, 65%;
+
+  @media screen and (min-width: 375px) {
+    background-size: 75%, 65%;
+    background-position: center bottom, center top 28px;
+    height: 315px;
+    width: 335px;
+  }
+
+  @media screen and (min-width: 768px) {
+    background-size: 75%, 65%;
+    background-position: center bottom, center top 36px;
+    height: 430px;
+    width: 459px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 530px;
+    width: 568px;
+
+    background-position: center bottom, center top 40px;
+  }
 `;

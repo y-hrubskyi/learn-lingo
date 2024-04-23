@@ -5,12 +5,27 @@ import StarSVG from "@/assets/icons/star.svg?react";
 import HeartSVG from "@/assets/icons/heart.svg?react";
 
 export const TeacherCard = styled.li`
+  position: relative;
+
   display: flex;
-  gap: ${(p) => p.theme.spacing(12)};
-  padding: 24px;
+  flex-direction: column;
+  align-items: center;
+  gap: ${(p) => p.theme.spacing(2)};
+  padding: ${(p) => p.theme.spacing(5)};
 
   border-radius: ${(p) => p.theme.radii.card};
   background: ${(p) => p.theme.colors.primaryBg};
+
+  @media screen and (min-width: 768px) {
+    gap: ${(p) => p.theme.spacing(8)};
+    flex-direction: row;
+    align-items: start;
+  }
+
+  @media screen and (min-width: 1440px) {
+    gap: ${(p) => p.theme.spacing(12)};
+    padding: ${(p) => p.theme.spacing(6)};
+  }
 `;
 
 export const TeacherAvatarWrapper = styled.div`
@@ -57,11 +72,23 @@ export const TeacherInfoWrapper = styled.div`
 export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+    gap: ${(p) => p.theme.spacing(6)};
+  }
 `;
 
 export const LeftHeaderBlock = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: ${(p) => p.theme.spacing(2)};
+
+  @media screen and (min-width: 768px) {
+    align-items: start;
+  }
 `;
 
 export const Label = styled.span`
@@ -73,8 +100,6 @@ export const Label = styled.span`
 `;
 
 export const TeacherFullName = styled.p`
-  margin-top: ${(p) => p.theme.spacing(2)};
-
   font-weight: 500;
   font-size: 24px;
   line-height: 1;
@@ -83,13 +108,26 @@ export const TeacherFullName = styled.p`
 
 export const RightHeaderBlock = styled.div`
   display: flex;
-  align-self: start;
 `;
 
 export const AboutTeacher = styled.div`
   display: flex;
-  gap: ${(p) => p.theme.spacing(8)};
-  margin-right: ${(p) => p.theme.spacing(16)};
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  column-gap: ${(p) => p.theme.spacing(8)};
+  row-gap: ${(p) => p.theme.spacing(2)};
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    align-self: start;
+    margin-right: ${(p) => p.theme.spacing(12)};
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-right: ${(p) => p.theme.spacing(22.5)};
+  }
 `;
 
 export const TeacherInfo = styled.div`
@@ -125,12 +163,24 @@ export const Price = styled.span`
 `;
 
 export const HeartBtn = styled.button`
-  width: 26px;
-  height: 26px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 24px;
+  height: 24px;
   padding: 0;
 
   background-color: transparent;
   border: none;
+
+  @media screen and (min-width: 1440px) {
+    top: 24px;
+    right: 24px;
+
+    width: 26px;
+    height: 26px;
+  }
 `;
 
 export const HeartIcon = styled(HeartSVG)`
@@ -240,6 +290,7 @@ export const StarIcon = styled(StarSVG)`
 export const LevelList = styled.ul`
   display: flex;
   gap: ${(p) => p.theme.spacing(2)};
+  flex-wrap: wrap;
 `;
 
 export const LevelItem = styled.li`
@@ -257,8 +308,8 @@ export const LevelItem = styled.li`
 `;
 
 export const ActionBtn = styled.button`
-  align-self: start;
-  padding: ${(p) => p.theme.spacing(4)} ${(p) => p.theme.spacing(12)};
+  align-self: center;
+  padding: ${(p) => p.theme.spacing(3)} ${(p) => p.theme.spacing(6)};
 
   font-weight: 700;
   font-size: 18px;
@@ -274,5 +325,13 @@ export const ActionBtn = styled.button`
   &:hover,
   &:focus {
     background-color: ${(p) => p.theme.colors.hover};
+  }
+
+  @media screen and (min-width: 768px) {
+    align-self: start;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: ${(p) => p.theme.spacing(4)} ${(p) => p.theme.spacing(12)};
   }
 `;

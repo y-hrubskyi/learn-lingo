@@ -3,16 +3,31 @@ import styled from "styled-components";
 import PaletteSVG from "@/assets/icons/palette.svg?react";
 
 export const Container = styled.div`
-  width: 1440px;
   margin: 0 auto;
-  padding-right: ${(p) => p.theme.spacing(16)};
-  padding-left: ${(p) => p.theme.spacing(16)};
+  padding-right: ${(p) => p.theme.spacing(5)};
+  padding-left: ${(p) => p.theme.spacing(5)};
+
+  @media screen and (min-width: 375px) {
+    width: 375px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding-right: ${(p) => p.theme.spacing(10)};
+    padding-left: ${(p) => p.theme.spacing(10)};
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+    padding-left: ${(p) => p.theme.spacing(16)};
+    padding-right: ${(p) => p.theme.spacing(16)};
+  }
 `;
 
 export const ThemeWrapper = styled.div`
   position: fixed;
-  top: 5%;
-  right: 5%;
+  bottom: 20px;
+  right: 20px;
   z-index: 100;
 `;
 

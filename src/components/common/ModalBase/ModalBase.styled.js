@@ -13,6 +13,7 @@ export const Backdrop = styled.div`
 
   background-color: ${(p) => p.theme.colors.primary(0.5)};
   overflow: auto;
+  z-index: 9999;
 `;
 
 export const Modal = styled.div`
@@ -21,9 +22,9 @@ export const Modal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: ${(p) => p["data-width"]};
+  min-width: 320px;
   max-height: 90%;
-  padding: ${(p) => p.theme.spacing(16)};
+  padding: ${(p) => p.theme.spacing(8)};
 
   background-color: ${(p) => p.theme.colors.primaryBg};
   border-radius: ${(p) => p.theme.radii.modal};
@@ -43,6 +44,16 @@ export const Modal = styled.div`
     border-radius: 10px;
     background: ${(p) => p.theme.colors.primary(0.2)};
   }
+
+  @media screen and (min-width: 768px) {
+    width: ${(p) => parseInt(p["data-width"]) - 40 + "px"};
+    padding: ${(p) => p.theme.spacing(10)};
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: ${(p) => p["data-width"]};
+    padding: ${(p) => p.theme.spacing(16)};
+  }
 `;
 
 export const CloseBtn = styled.button`
@@ -51,8 +62,8 @@ export const CloseBtn = styled.button`
   right: 20px;
   z-index: 1;
 
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   padding: 0;
 
   color: ${(p) => p.theme.colors.primary()};
@@ -63,6 +74,16 @@ export const CloseBtn = styled.button`
   &:hover,
   &:focus {
     color: ${(p) => p.theme.colors.hover};
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 32px;
+    height: 32px;
   }
 `;
 
@@ -76,17 +97,29 @@ export const BaseModalTitle = styled.p`
   margin-bottom: ${(p) => p.theme.spacing(5)};
 
   font-weight: 500;
-  font-size: 40px;
+  font-size: 28px;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: ${(p) => p.theme.colors.primary()};
+
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    font-size: 40px;
+  }
 `;
 
 export const BaseModalDescription = styled.p`
-  margin-bottom: ${(p) => p.theme.spacing(10)};
+  margin-bottom: ${(p) => p.theme.spacing(8)};
 
   font-weight: 400;
   font-size: 16px;
   line-height: 1.375;
   color: ${(p) => p.theme.colors.primary(0.8)};
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: ${(p) => p.theme.spacing(10)};
+  }
 `;

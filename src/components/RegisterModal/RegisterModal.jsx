@@ -22,7 +22,7 @@ const initialValues = {
   password: "",
 };
 
-export const RegisterModal = ({ onClose }) => {
+export const RegisterModal = ({ onClose, onCloseMobileMenu }) => {
   const { signUp, updateUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
@@ -45,6 +45,7 @@ export const RegisterModal = ({ onClose }) => {
         success: <ToastMessage>Registration successful!</ToastMessage>,
         error: <ToastMessage>Registration failed. Try again.</ToastMessage>,
       });
+      onCloseMobileMenu();
     } catch (error) {
       // handled in toast.promise
     } finally {
