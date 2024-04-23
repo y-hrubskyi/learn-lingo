@@ -13,12 +13,26 @@ export const FeatureList = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: ${(p) => p.theme.spacing(25)};
-  height: 116px;
+  flex-wrap: wrap;
+  gap: ${(p) => p.theme.spacing(10)};
+  padding: ${(p) => p.theme.spacing(10)};
 
   border-radius: ${(p) => p.theme.radii.modal};
   background-image: ${(p) =>
     `url("data:image/svg+xml;utf8,${encodeURIComponent(borderSVG(p))}")`};
+
+  @media screen and (min-width: 768px) {
+    row-gap: ${(p) => p.theme.spacing(10)};
+    justify-content: space-evenly;
+    padding: ${(p) => p.theme.spacing(10)} ${(p) => p.theme.spacing(20)};
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-wrap: nowrap;
+    gap: ${(p) => p.theme.spacing(25)};
+    justify-content: space-between;
+    padding: ${(p) => p.theme.spacing(10)} ${(p) => p.theme.spacing(30)};
+  }
 `;
 
 export const FeatureItem = styled.li`
@@ -27,6 +41,7 @@ export const FeatureItem = styled.li`
 `;
 
 export const FeatureQty = styled.p`
+  flex-shrink: 0;
   font-weight: 500;
   font-size: 28px;
   line-height: 1.14286;
