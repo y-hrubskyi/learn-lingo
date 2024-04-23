@@ -1,4 +1,4 @@
-import * as SC from "./Features.styled";
+import * as SC from "./FeaturesSection.styled";
 
 const featuresList = [
   { prop: "Experienced tutors", qty: 32000 },
@@ -7,7 +7,7 @@ const featuresList = [
   { prop: "Tutor nationalities", qty: 200 },
 ];
 
-export const Features = () => {
+export const FeaturesSection = () => {
   return (
     <SC.FeaturesSection>
       <SC.FeatureList>
