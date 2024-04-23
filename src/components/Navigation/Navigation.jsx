@@ -2,24 +2,30 @@ import { useAuth } from "@/hooks/useAuth";
 
 import * as SC from "./Navigation.styled";
 
-export const Navigation = () => {
+export const Navigation = ({ mobileMenuOpen, onCloseMobileMenu }) => {
   const { currentUser } = useAuth();
 
   return (
-    <nav>
-      <SC.NavList>
+    <SC.Navigation data-mobile-menu-open={mobileMenuOpen}>
+      <SC.NavList data-mobile-menu-open={mobileMenuOpen}>
         <li>
-          <SC.NavLink to="/">Home</SC.NavLink>
+          <SC.NavLink to="/" onClick={onCloseMobileMenu}>
+            Home
+          </SC.NavLink>
         </li>
         <li>
-          <SC.NavLink to="/teachers">Teachers</SC.NavLink>
+          <SC.NavLink to="/teachers" onClick={onCloseMobileMenu}>
+            Teachers
+          </SC.NavLink>
         </li>
         {currentUser && (
           <li>
-            <SC.NavLink to="/favorites">Favorites</SC.NavLink>
+            <SC.NavLink to="/favorites" onClick={onCloseMobileMenu}>
+              Favorites
+            </SC.NavLink>
           </li>
         )}
       </SC.NavList>
-    </nav>
+    </SC.Navigation>
   );
 };

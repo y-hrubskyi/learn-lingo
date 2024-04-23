@@ -21,7 +21,7 @@ const initialValues = {
   password: "",
 };
 
-export const LoginModal = ({ onClose }) => {
+export const LoginModal = ({ onClose, onCloseMobileMenu }) => {
   const { logIn } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
@@ -41,6 +41,7 @@ export const LoginModal = ({ onClose }) => {
         success: <ToastMessage>Login successful!</ToastMessage>,
         error: <ToastMessage>Login failed. Try again.</ToastMessage>,
       });
+      onCloseMobileMenu();
     } catch (error) {
       // handled in toast.promise
     } finally {
