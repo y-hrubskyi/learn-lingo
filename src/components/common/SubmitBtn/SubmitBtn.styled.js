@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  height: 60px;
+  height: 50px;
 
   font-weight: 700;
   font-size: 18px;
@@ -17,5 +17,9 @@ export const Button = styled.button`
   &:hover,
   &:focus {
     background-color: ${(p) => p.theme.colors.hover};
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 60px;
   }
 `;

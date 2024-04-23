@@ -10,7 +10,7 @@ export const FieldWrapper = styled.div`
 `;
 
 export const Field = styled(FormikField)`
-  padding: ${(p) => p.theme.spacing(4)} ${(p) => p.theme.spacing(4.5)};
+  padding: ${(p) => p.theme.spacing(3)} ${(p) => p.theme.spacing(3.5)};
 
   font-weight: 400;
   font-size: 16px;
@@ -23,6 +23,10 @@ export const Field = styled(FormikField)`
 
   &::placeholder {
     color: currentColor;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: ${(p) => p.theme.spacing(4)} ${(p) => p.theme.spacing(4.5)};
   }
 `;
 

@@ -10,7 +10,11 @@ export const BookModalDescription = styled(BaseModalDescription)`
 export const TeacherInfo = styled.div`
   display: flex;
   gap: ${(p) => p.theme.spacing(3.5)};
-  margin-bottom: ${(p) => p.theme.spacing(10)};
+  margin-bottom: ${(p) => p.theme.spacing(8)};
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: ${(p) => p.theme.spacing(10)};
+  }
 `;
 
 export const TeacherAvatar = styled.img`
@@ -53,7 +57,11 @@ export const ReasonRadioGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${(p) => p.theme.spacing(4)};
-  margin-bottom: ${(p) => p.theme.spacing(10)};
+  margin-bottom: ${(p) => p.theme.spacing(5)};
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: ${(p) => p.theme.spacing(5.5)};
+  }
 `;
 
 export const ReasonRadioLabel = styled.label`

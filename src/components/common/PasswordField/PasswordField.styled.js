@@ -5,7 +5,7 @@ import EyeOffSVG from "@/assets/icons/eye-off.svg?react";
 
 export const EyeBtn = styled.button`
   position: absolute;
-  top: 17px;
+  top: 14px;
   right: 18px;
 
   width: 20px;
@@ -22,6 +22,11 @@ export const EyeBtn = styled.button`
   &:hover,
   &:focus {
     color: ${(p) => p.theme.colors.accent};
+  }
+
+  @media screen and (min-width: 1440px) {
+    top: 18px;
+    right: 18px;
   }
 `;
 
