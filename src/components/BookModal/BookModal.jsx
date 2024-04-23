@@ -18,13 +18,14 @@ const initialValues = {
 };
 
 export const BookModal = ({
+  isOpen,
   onClose,
   teacherName,
   teacherSurname,
   teacherAvatar,
 }) => {
   return (
-    <ModalBase onClose={onClose} width="600px">
+    <ModalBase isOpen={isOpen} onClose={onClose} width="600px">
       <BaseModalTitle>Book trial lesson</BaseModalTitle>
       <SC.BookModalDescription>
         Our experienced tutor will assess your current language level, discuss
