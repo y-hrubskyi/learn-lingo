@@ -12,7 +12,13 @@ const mapListWithSeparator = (arr, separator) =>
     index === array.length - 1 ? item : item + separator
   );
 
-export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
+export const TeacherItem = ({
+  teacher,
+  teacherId,
+  isFavorite,
+  userId,
+  level: selectedLevel,
+}) => {
   const [readMore, setReadMore] = useState(false);
   const [isBookOpen, setIsBookOpen] = useState(false);
   const [isFavoriteActionLoading, setIsFavoriteActionLoading] = useState(false);
@@ -158,7 +164,7 @@ export const TeacherItem = ({ teacher, teacherId, isFavorite, userId }) => {
           {teacher.levels.map((level) => (
             <SC.LevelItem
               key={level}
-              data-is-filtered={"A1 Beginner" === level}
+              data-is-filtered={selectedLevel === level}
             >
               #{level}
             </SC.LevelItem>
