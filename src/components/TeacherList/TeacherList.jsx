@@ -6,7 +6,7 @@ import { subscribeFavoriteKeys } from "@/services/firebase";
 import { TeacherItem } from "@/components/TeacherItem/TeacherItem";
 import * as SC from "./TeacherList.styled";
 
-export const TeacherList = ({ teachers }) => {
+export const TeacherList = ({ teachers, level }) => {
   const [favoriteKeys, setFavoriteKeys] = useState(null);
   const { currentUser } = useAuth();
 
@@ -27,6 +27,7 @@ export const TeacherList = ({ teachers }) => {
           teacherId={key}
           isFavorite={currentUser && favoriteKeys?.includes(key)}
           userId={currentUser?.uid}
+          level={level}
         />
       ))}
     </SC.TeacherList>
