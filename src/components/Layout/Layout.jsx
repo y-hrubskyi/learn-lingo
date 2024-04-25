@@ -32,7 +32,11 @@ export const Layout = () => {
         />
 
         <SC.ThemeWrapper>
-          <SC.ThemeBtn type="button" onClick={toggleThemePopup}>
+          <SC.ThemeBtn
+            type="button"
+            onClick={toggleThemePopup}
+            aria-label="theme selector"
+          >
             <SC.PaletteIcon />
           </SC.ThemeBtn>
           {isThemePopupOpen && (

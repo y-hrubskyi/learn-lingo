@@ -69,6 +69,7 @@ export const TeacherItem = ({
         type="button"
         onClick={handleFavoriteClick}
         disabled={isFavoriteActionLoading}
+        aria-label={`${isFavorite ? "remove from" : "add to"} favorites`}
       >
         <SC.HeartIcon data-is-favorite={isFavorite} />
       </SC.HeartBtn>
