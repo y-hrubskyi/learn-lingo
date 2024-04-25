@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import GirlImg from "@/assets/img/hero/girl.png";
-import YellowMacImg from "@/assets/img/hero/yellow-mac.png";
-import GreenMacImg from "@/assets/img/hero/green-mac.png";
-import BlueMacImg from "@/assets/img/hero/blue-mac.png";
-import CoralMacImg from "@/assets/img/hero/coral-mac.png";
-import PeachMacImg from "@/assets/img/hero/peach-mac.png";
+import GirlImg from "@/assets/img/hero/girl.webp";
+import YellowMacImg from "@/assets/img/hero/yellow-mac.webp";
+import GreenMacImg from "@/assets/img/hero/green-mac.webp";
+import BlueMacImg from "@/assets/img/hero/blue-mac.webp";
+import CoralMacImg from "@/assets/img/hero/coral-mac.webp";
+import PeachMacImg from "@/assets/img/hero/peach-mac.webp";
 
 const chooseMacImg = ({ theme }) => {
   switch (theme.name) {
