@@ -33,7 +33,11 @@ export const Header = () => {
         <Navigation />
         {currentUser ? <UserMenu /> : <AuthNav />}
 
-        <SC.MobileMenuBtn type="button" onClick={toggleMobileMenu}>
+        <SC.MobileMenuBtn
+          type="button"
+          onClick={toggleMobileMenu}
+          aria-label={`${isMobileMenuOpen ? "hide" : "show"} mobile menu`}
+        >
           {isMobileMenuOpen ? <SC.CrossIcon /> : <SC.MobileMenuIcon />}
         </SC.MobileMenuBtn>
       </SC.HeaderWrapper>
