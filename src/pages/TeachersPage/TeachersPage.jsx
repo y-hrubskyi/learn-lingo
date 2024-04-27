@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { getTeachers } from "@/services/firebase";
 
@@ -14,7 +14,7 @@ const TeachersPage = () => {
   const [loadMore, setLoadMore] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const lastKey = useRef();
+  const lastVisible = useRef();
   const [language, setLanguage] = useState("");
   const [level, setLevel] = useState("");
   const [price, setPrice] = useState("");
@@ -25,10 +25,14 @@ const TeachersPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const teachers = await getTeachers(lastKey.current);
+        const filters = { language, level, price };
+        const data = await getTeachers(lastVisible.current, filters);
+
+        const teachers = data.map((doc) => ({ ...doc.data(), id: doc.id }));
         const loadMore = teachers.length >= 4;
-        if (teachers.length) {
-          lastKey.current = teachers[teachers.length - 1].id;
+
+        if (data.length) {
+          lastVisible.current = data[data.length - 1];
         }
 
         setTeachers((prevState) => [...prevState, ...teachers]);
@@ -39,11 +43,15 @@ const TeachersPage = () => {
         setIsLoading(false);
       }
     })();
-  }, [page]);
+  }, [page, language, level, price]);
 
   const updateFilter = (setFilter) => {
     return (value) => {
       setFilter(value);
+      setTeachers([]);
+      setPage(1);
+      setLoadMore(false);
+      lastVisible.current = null;
     };
   };
 
@@ -51,34 +59,7 @@ const TeachersPage = () => {
     setPage((prevState) => prevState + 1);
   };
 
-  const filteredTeachers = useMemo(() => {
-    return teachers.filter((teacher) => {
-      let result;
-      let hasFilter = false;
-
-      if (language) {
-        hasFilter = true;
-        result = teacher.languages.includes(language);
-        if (!result) return;
-      }
-
-      if (level) {
-        hasFilter = true;
-        result = teacher.levels.includes(level);
-        if (!result) return;
-      }
-
-      if (price) {
-        hasFilter = true;
-        result = teacher.price_per_hour <= Number(price);
-        if (!result) return;
-      }
-
-      return hasFilter ? result : true;
-    });
-  }, [language, level, price, teachers]);
-
-  const listIsEmpty = filteredTeachers.length === 0;
+  const listIsEmpty = teachers.length === 0;
   const showList = !error && !listIsEmpty;
   const showLoadMore = !isLoading && !error && loadMore;
   const showNoData = !isLoading && !error && !loadMore && listIsEmpty;
@@ -91,7 +72,7 @@ const TeachersPage = () => {
         setLevel={(value) => updateFilter(setLevel)(value)}
         setPrice={(value) => updateFilter(setPrice)(value)}
       />
-      {showList && <TeacherList teachers={filteredTeachers} level={level} />}
+      {showList && <TeacherList teachers={teachers} level={level} />}
       {showLoadMore && (
         <SC.LoadMoreBtn type="button" onClick={handleLoadMore}>
           Load more

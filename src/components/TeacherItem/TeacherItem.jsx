@@ -62,6 +62,8 @@ export const TeacherItem = ({
     setIsBookOpen((prevState) => !prevState);
   };
 
+  const levels = Object.keys(teacher.levels).sort((a, b) => a.localeCompare(b));
+
   return (
     <SC.TeacherCard>
       <SC.HeartBtn
@@ -161,7 +163,7 @@ export const TeacherItem = ({
         </div>
 
         <SC.LevelList>
-          {teacher.levels.map((level) => (
+          {levels.map((level) => (
             <SC.LevelItem
               key={level}
               data-is-filtered={selectedLevel === level}

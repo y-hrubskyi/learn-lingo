@@ -9,11 +9,11 @@ import {
   getFirestore,
   limit,
   onSnapshot,
-  orderBy,
   query,
   setDoc,
   startAfter,
   updateDoc,
+  where,
 } from "firebase/firestore";
 
 const {
@@ -42,16 +42,31 @@ export const auth = getAuth(app);
 
 const db = getFirestore(app);
 
-export const getTeachers = async (lastKey) => {
+export const getTeachers = async (lastKey, filters) => {
+  const { language, level, price } = filters;
   const teachersRef = collection(db, "teachers");
 
-  let myQuery = query(teachersRef, orderBy("__name__"), limit(4));
+  let myQuery = query(teachersRef);
+  if (language) {
+    myQuery = query(myQuery, where("languages", "array-contains", language));
+  }
+
+  if (level) {
+    myQuery = query(myQuery, where(`levels.${level}`, "==", true));
+  }
+
+  if (price) {
+    myQuery = query(myQuery, where("price_per_hour", "<=", price));
+  }
+
   if (lastKey) {
     myQuery = query(myQuery, startAfter(lastKey));
   }
 
+  myQuery = query(myQuery, limit(4));
+
   const snapshot = await getDocs(myQuery);
-  return snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+  return snapshot.docs;
 };
 
 export const subscribeFavoriteKeys = (userId, setKeys) => {
