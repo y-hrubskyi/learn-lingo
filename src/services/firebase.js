@@ -1,21 +1,19 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import {
-  get,
-  getDatabase,
-  onValue,
-  ref,
-  remove,
-  update,
-} from "firebase/database";
+import { get, getDatabase, onValue, ref } from "firebase/database";
 import {
   collection,
+  deleteField,
+  doc,
   getDocs,
   getFirestore,
   limit,
+  onSnapshot,
   orderBy,
   query,
+  setDoc,
   startAfter,
+  updateDoc,
 } from "firebase/firestore";
 
 const {
@@ -61,10 +59,10 @@ export const getTeachers = async (lastKey) => {
 };
 
 export const subscribeFavoriteKeys = (userId, setKeys) => {
-  const ref = createRef(`/favorites/${userId}`);
+  const ref = doc(db, "favorites", userId);
 
-  return onValue(ref, (snapshot) => {
-    const keys = snapshot.val();
+  return onSnapshot(ref, (snapshot) => {
+    const keys = snapshot.data();
     const nextKeys = keys && Object.keys(keys);
     setKeys(nextKeys);
   });
@@ -105,11 +103,17 @@ export const subscribeFavoriteItems = (
 };
 
 export const addToFavorites = (userId, teacherId) => {
-  return update(ref(dbRB, `/favorites/${userId}`), {
-    [teacherId]: true,
-  });
+  return setDoc(
+    doc(db, "favorites", userId),
+    {
+      [teacherId]: true,
+    },
+    { merge: true }
+  );
 };
 
 export const removeFromFavorites = (userId, teacherId) => {
-  return remove(ref(dbRB, `/favorites/${userId}/${teacherId}`));
+  return updateDoc(doc(db, "favorites", userId), {
+    [teacherId]: deleteField(),
+  });
 };
