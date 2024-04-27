@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref } from "firebase/database";
 import {
   collection,
   deleteField,
@@ -40,10 +39,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-
-const dbRB = getDatabase(app);
-
-export const createRef = (path) => ref(dbRB, path);
 
 const db = getFirestore(app);
 
