@@ -1,10 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { get, getDatabase, onValue, ref } from "firebase/database";
+import { getDatabase, ref } from "firebase/database";
 import {
   collection,
   deleteField,
   doc,
+  getDoc,
   getDocs,
   getFirestore,
   limit,
@@ -77,22 +78,25 @@ export const subscribeFavoriteItems = (
   setIsLoading(true);
   setError(null);
 
-  const ref = createRef(`/favorites/${userId}`);
+  const ref = doc(db, "favorites", userId);
 
-  return onValue(ref, async (snapshot) => {
+  return onSnapshot(ref, async (snapshot) => {
     try {
-      const keys = snapshot.val();
-      if (!keys) return setItems(null);
+      const keys = Object.keys(snapshot.data());
 
-      const itemsPromises = Object.keys(keys).map((itemId) => {
-        return get(createRef(`/teachers/${itemId}`));
-      });
+      const isEmpty = keys.length === 0;
+      if (isEmpty) return setItems(null);
+
+      const itemsPromises = keys.map((itemId) =>
+        getDoc(doc(db, "teachers", itemId))
+      );
       const snapshots = await Promise.all(itemsPromises);
 
-      const items = {};
-      snapshots.forEach((snapshot) => (items[snapshot.key] = snapshot.val()));
+      const nextItems = snapshots.map((snapshot) => ({
+        ...snapshot.data(),
+        id: snapshot.id,
+      }));
 
-      const nextItems = items && Object.entries(items);
       setItems(nextItems);
     } catch (error) {
       setError(error.message);
