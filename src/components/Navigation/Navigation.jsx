@@ -8,22 +8,22 @@ export const Navigation = ({ mobileMenuOpen, onCloseMobileMenu }) => {
   return (
     <SC.Navigation data-mobile-menu-open={mobileMenuOpen}>
       <SC.NavList data-mobile-menu-open={mobileMenuOpen}>
-        <li>
+        <SC.NavItem>
           <SC.NavLink to="/" onClick={onCloseMobileMenu}>
             Home
           </SC.NavLink>
-        </li>
-        <li>
+        </SC.NavItem>
+        <SC.NavItem>
           <SC.NavLink to="/teachers" onClick={onCloseMobileMenu}>
             Teachers
           </SC.NavLink>
-        </li>
+        </SC.NavItem>
         {currentUser && (
-          <li>
+          <SC.NavItem>
             <SC.NavLink to="/favorites" onClick={onCloseMobileMenu}>
               Favorites
             </SC.NavLink>
-          </li>
+          </SC.NavItem>
         )}
       </SC.NavList>
     </SC.Navigation>

@@ -20,12 +20,11 @@ export const TeacherList = ({ teachers, level }) => {
 
   return (
     <SC.TeacherList>
-      {teachers.map(([key, teacher]) => (
+      {teachers.map((teacher) => (
         <TeacherItem
-          key={key}
+          key={teacher.id}
           teacher={teacher}
-          teacherId={key}
-          isFavorite={currentUser && favoriteKeys?.includes(key)}
+          isFavorite={currentUser && favoriteKeys?.includes(teacher.id)}
           userId={currentUser?.uid}
           level={level}
         />

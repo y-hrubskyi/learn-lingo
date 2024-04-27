@@ -22,7 +22,11 @@ export const ModalBase = ({ isOpen, onClose, width, children }) => {
         <SC.Backdrop {...props}>{contentElement}</SC.Backdrop>
       )}
     >
-      <SC.CloseBtn type="button" onClick={onClose}>
+      <SC.CloseBtn
+        type="button"
+        onClick={onClose}
+        aria-label="close modal window"
+      >
         <SC.CrossIcon />
       </SC.CloseBtn>
       {children}

@@ -14,7 +14,6 @@ const mapListWithSeparator = (arr, separator) =>
 
 export const TeacherItem = ({
   teacher,
-  teacherId,
   isFavorite,
   userId,
   level: selectedLevel,
@@ -34,11 +33,11 @@ export const TeacherItem = ({
 
       let favoriteActionPromise, loadingMessage, resultMessage;
       if (isFavorite) {
-        favoriteActionPromise = removeFromFavorites(userId, teacherId);
+        favoriteActionPromise = removeFromFavorites(userId, teacher.id);
         loadingMessage = "Removing...";
         resultMessage = "Removed from favorites";
       } else {
-        favoriteActionPromise = addToFavorites(userId, teacherId);
+        favoriteActionPromise = addToFavorites(userId, teacher.id);
         loadingMessage = "Adding...";
         resultMessage = "Added to favorites";
       }
@@ -63,12 +62,15 @@ export const TeacherItem = ({
     setIsBookOpen((prevState) => !prevState);
   };
 
+  const levels = Object.keys(teacher.levels).sort((a, b) => a.localeCompare(b));
+
   return (
     <SC.TeacherCard>
       <SC.HeartBtn
         type="button"
         onClick={handleFavoriteClick}
         disabled={isFavoriteActionLoading}
+        aria-label={`${isFavorite ? "remove from" : "add to"} favorites`}
       >
         <SC.HeartIcon data-is-favorite={isFavorite} />
       </SC.HeartBtn>
@@ -161,7 +163,7 @@ export const TeacherItem = ({
         </div>
 
         <SC.LevelList>
-          {teacher.levels.map((level) => (
+          {levels.map((level) => (
             <SC.LevelItem
               key={level}
               data-is-filtered={selectedLevel === level}
