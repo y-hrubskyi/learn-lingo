@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-import { saveTheme } from "@/services/localStorage";
-import { Themes } from "@/styles/theme";
+import { saveTheme } from "@/services/theme";
+import { Themes } from "@/styles/themes";
 
 import * as SC from "./ThemeModal.styled";
 
