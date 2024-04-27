@@ -3,8 +3,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { Toaster } from "react-hot-toast";
 
-import { getInitialTheme } from "@/services/localStorage";
-import { getTheme } from "@/styles/theme";
+import { getInitialTheme } from "@/services/theme";
+import { getTheme } from "@/styles/themes";
 
 import { GlobalStyle } from "@/styles/GlobalStyle";
 import { Header } from "@/components/Header/Header";
