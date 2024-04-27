@@ -4,7 +4,7 @@ This project was bootstrapped with [Vite + React](https://github.com/vitejs/vite
 
 ## Overview
 
-Learn Lingo App is a web application that allows users to browse teachers and book trial lesson. The platform provides a catalog of available teachers, with options to filter by language, level of knowledge and price. Users can also add teachers to their favorites list. Additionally, the project incorporates a responsive design approach to ensure optimal viewing across different devices.
+Learn Lingo App is a web application that allows users to browse language-teachers and book trial lesson. The platform provides a catalog of available language-teachers, with options to filter by language, level of knowledge and price. Users can also add teachers to their favorites list. Additionally, the project incorporates a responsive design approach to ensure optimal viewing across different devices.
 
 ## Preview
 
@@ -16,7 +16,7 @@ Include demo GIF to visually showcase the application.
 
 - **User Authentication:** Register securely with unique credentials. Login easily to access your account.
 - **Teacher Browsing:**
-  Browse a catalog of available teachers, filtering by language, level of knowledge and price.
+  Browse a catalog of available language-teachers, filtering by language, level of knowledge and price.
 - **Favorites:**
   Add teachers to your favorites list for quick access.
 - **User-Friendly Interface:**
@@ -32,7 +32,7 @@ Include demo GIF to visually showcase the application.
   - React Router: Declarative routing in single-page applications.
   - react-hot-toast: React notifications library for displaying toast messages.
 - **Backend:**
-  - Firebase: Google's platform for web and mobile app development, providing real-time database, authentication, hosting, and cloud functions.
+  - Firebase: Google's platform for web and mobile app development, providing real-time database, authentication, cloud firestore, hosting, and cloud functions.
 - **Deployment:**
   - GitHub Pages: Hosting platform for deploying the frontend.
 - **Version Control:**
@@ -49,6 +49,7 @@ learn-lingo/
 |-- src/                  # Source code
 |   |-- assets/           # Static assets such as images, fonts, etc.
 |   |-- components/       # Reusable React components
+|   |-- config/           # Configuration files
 |   |-- constants/        # Holds application-wide constant values
 |   |-- contexts/         # Manages global state in React components
 |   |-- hooks/            # Custom React hooks
