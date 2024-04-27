@@ -25,15 +25,21 @@ const TeachersPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const teachers = await getTeachers();
-        setTeachers(teachers);
+        const teachers = await getTeachers(lastKey.current);
+        const loadMore = teachers.length >= 4;
+        if (teachers.length) {
+          lastKey.current = teachers[teachers.length - 1].id;
+        }
+
+        setTeachers((prevState) => [...prevState, ...teachers]);
+        setLoadMore(loadMore);
       } catch (error) {
         setError(error.message);
       } finally {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [page]);
 
   const updateFilter = (setFilter) => {
     return (value) => {

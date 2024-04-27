@@ -8,7 +8,15 @@ import {
   remove,
   update,
 } from "firebase/database";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  limit,
+  orderBy,
+  query,
+  startAfter,
+} from "firebase/firestore";
 
 const {
   VITE_FIREBASE_API_KEY: API_KEY,
@@ -40,8 +48,15 @@ export const createRef = (path) => ref(dbRB, path);
 
 const db = getFirestore(app);
 
-export const getTeachers = async () => {
-  const snapshot = await getDocs(collection(db, "teachers"));
+export const getTeachers = async (lastKey) => {
+  const teachersRef = collection(db, "teachers");
+
+  let myQuery = query(teachersRef, orderBy("__name__"), limit(4));
+  if (lastKey) {
+    myQuery = query(myQuery, startAfter(lastKey));
+  }
+
+  const snapshot = await getDocs(myQuery);
   return snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 };
 
