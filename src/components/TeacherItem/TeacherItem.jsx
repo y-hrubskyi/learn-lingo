@@ -14,7 +14,6 @@ const mapListWithSeparator = (arr, separator) =>
 
 export const TeacherItem = ({
   teacher,
-  teacherId,
   isFavorite,
   userId,
   level: selectedLevel,
@@ -34,11 +33,11 @@ export const TeacherItem = ({
 
       let favoriteActionPromise, loadingMessage, resultMessage;
       if (isFavorite) {
-        favoriteActionPromise = removeFromFavorites(userId, teacherId);
+        favoriteActionPromise = removeFromFavorites(userId, teacher.id);
         loadingMessage = "Removing...";
         resultMessage = "Removed from favorites";
       } else {
-        favoriteActionPromise = addToFavorites(userId, teacherId);
+        favoriteActionPromise = addToFavorites(userId, teacher.id);
         loadingMessage = "Adding...";
         resultMessage = "Added to favorites";
       }

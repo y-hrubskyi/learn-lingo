@@ -3,15 +3,12 @@ import { getAuth } from "firebase/auth";
 import {
   get,
   getDatabase,
-  limitToFirst,
   onValue,
-  orderByKey,
-  query,
   ref,
   remove,
-  startAfter,
   update,
 } from "firebase/database";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const {
   VITE_FIREBASE_API_KEY: API_KEY,
@@ -37,20 +34,15 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 
-const db = getDatabase(app);
+const dbRB = getDatabase(app);
 
-export const createRef = (path) => ref(db, path);
+export const createRef = (path) => ref(dbRB, path);
 
-export const getTeachers = async (lastKey) => {
-  const teachersRef = createRef("/teachers");
+const db = getFirestore(app);
 
-  let myQuery = query(teachersRef, orderByKey(), limitToFirst(4));
-  if (lastKey) {
-    myQuery = query(myQuery, startAfter(lastKey));
-  }
-
-  const snapshot = await get(myQuery);
-  return snapshot.val();
+export const getTeachers = async () => {
+  const snapshot = await getDocs(collection(db, "teachers"));
+  return snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 };
 
 export const subscribeFavoriteKeys = (userId, setKeys) => {
@@ -98,11 +90,11 @@ export const subscribeFavoriteItems = (
 };
 
 export const addToFavorites = (userId, teacherId) => {
-  return update(ref(db, `/favorites/${userId}`), {
+  return update(ref(dbRB, `/favorites/${userId}`), {
     [teacherId]: true,
   });
 };
 
 export const removeFromFavorites = (userId, teacherId) => {
-  return remove(ref(db, `/favorites/${userId}/${teacherId}`));
+  return remove(ref(dbRB, `/favorites/${userId}/${teacherId}`));
 };

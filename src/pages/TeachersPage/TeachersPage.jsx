@@ -25,22 +25,15 @@ const TeachersPage = () => {
         setIsLoading(true);
         setError(null);
 
-        const data = await getTeachers(lastKey.current);
-
-        const keys = Object.keys(data);
-        const loadMore = keys.length >= 4;
-        lastKey.current = keys[keys.length - 1];
-
-        setTeachers((prevState) => [...prevState, ...Object.entries(data)]);
-        setLoadMore(loadMore);
+        const teachers = await getTeachers();
+        setTeachers(teachers);
       } catch (error) {
-        console.log(error);
         setError(error.message);
       } finally {
         setIsLoading(false);
       }
     })();
-  }, [page]);
+  }, []);
 
   const updateFilter = (setFilter) => {
     return (value) => {
@@ -53,7 +46,7 @@ const TeachersPage = () => {
   };
 
   const filteredTeachers = useMemo(() => {
-    return teachers.filter(([, teacher]) => {
+    return teachers.filter((teacher) => {
       let result;
       let hasFilter = false;
 
