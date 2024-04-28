@@ -15,7 +15,7 @@ import {
 
 import { db } from "@/config/firebase";
 
-export const getTeachers = async (lastKey, filters) => {
+export const getTeachers = async (lastDoc, filters) => {
   const { language, level, price } = filters;
   const teachersRef = collection(db, "teachers");
 
@@ -32,8 +32,8 @@ export const getTeachers = async (lastKey, filters) => {
     myQuery = query(myQuery, where("price_per_hour", "<=", price));
   }
 
-  if (lastKey) {
-    myQuery = query(myQuery, startAfter(lastKey));
+  if (lastDoc) {
+    myQuery = query(myQuery, startAfter(lastDoc));
   }
 
   myQuery = query(myQuery, limit(4));
