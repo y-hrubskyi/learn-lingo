@@ -8,16 +8,7 @@ export default defineConfig({
   base: "/learn-lingo/",
   resolve: {
     alias: {
-      "@/": "/src",
-      "@/assets": "/src/assets",
-      "@/components": "/src/components",
-      "@/config": "/src/config",
-      "@/constants": "/src/constants",
-      "@/contexts": "/src/contexts",
-      "@/hooks": "/src/hooks",
-      "@/pages": "/src/pages",
-      "@/services": "/src/services",
-      "@/styles": "/src/styles",
+      "@": "/src",
     },
   },
 });
