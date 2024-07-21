@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { useAuth } from "@/hooks/useAuth";
-import { subscribeFavoriteKeys } from "@/services/firebase";
+import { useAuth } from '@/hooks/useAuth';
+import { subscribeFavoriteKeys } from '@/services/firebase';
 
-import { TeacherItem } from "@/components/TeacherItem/TeacherItem";
-import * as SC from "./TeacherList.styled";
+import { TeacherItem } from '@/components/TeacherItem/TeacherItem';
+import * as SC from './TeacherList.styled';
 
 export const TeacherList = ({ teachers, level }) => {
   const [favoriteKeys, setFavoriteKeys] = useState(null);
@@ -20,7 +20,7 @@ export const TeacherList = ({ teachers, level }) => {
 
   return (
     <SC.TeacherList>
-      {teachers.map((teacher) => (
+      {teachers.map(teacher => (
         <TeacherItem
           key={teacher.id}
           teacher={teacher}

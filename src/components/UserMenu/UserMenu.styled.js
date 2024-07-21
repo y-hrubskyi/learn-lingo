@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import LogoutSVG from "@/assets/icons/logout.svg?react";
+import LogoutSVG from '@/assets/icons/logout.svg?react';
 
 export const UserMenuWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: ${(p) => p.theme.spacing(5)};
+  gap: ${p => p.theme.spacing(5)};
 
   @media screen and (max-width: 767px) {
     position: relative;
-    display: ${(p) => (p["data-mobile-menu-open"] ? "block" : "none")};
+    display: ${p => (p['data-mobile-menu-open'] ? 'block' : 'none')};
     z-index: 999;
   }
 `;
@@ -17,7 +17,7 @@ export const UserMenuWrapper = styled.div`
 export const User = styled.div`
   display: flex;
   align-items: center;
-  gap: ${(p) => p.theme.spacing(2)};
+  gap: ${p => p.theme.spacing(2)};
 `;
 
 export const UserAvatarBtn = styled.button`
@@ -30,11 +30,11 @@ export const UserAvatarBtn = styled.button`
 
   font-weight: 600;
   font-size: 16px;
-  color: ${(p) => p.theme.colors.primary()};
+  color: ${p => p.theme.colors.primary()};
 
-  background: ${(p) => p.theme.colors.accent};
+  background: ${p => p.theme.colors.accent};
   border-radius: 50%;
-  border: 1px solid ${(p) => p.theme.colors.primary()};
+  border: 1px solid ${p => p.theme.colors.primary()};
 `;
 
 export const Backdrop = styled.div`
@@ -52,10 +52,10 @@ export const DropdownMenu = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: ${(p) => p.theme.spacing(2)};
-  padding: ${(p) => p.theme.spacing(4)};
+  gap: ${p => p.theme.spacing(2)};
+  padding: ${p => p.theme.spacing(4)};
 
-  background-color: ${(p) => p.theme.colors.primaryBg};
+  background-color: ${p => p.theme.colors.primaryBg};
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
@@ -75,23 +75,23 @@ export const UserName = styled.p`
 export const LogoutBtn = styled.button`
   display: flex;
 
-  gap: ${(p) => p.theme.spacing(2)};
+  gap: ${p => p.theme.spacing(2)};
   padding: 0;
 
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-  color: ${(p) => p.theme.colors.primary()};
+  color: ${p => p.theme.colors.primary()};
   white-space: nowrap;
 
   background-color: transparent;
   border: none;
 
-  transition: ${(p) => p.theme.transition("color")};
+  transition: ${p => p.theme.transition('color')};
 
   &:hover,
   &:focus {
-    color: ${(p) => p.theme.colors.accent};
+    color: ${p => p.theme.colors.accent};
   }
 `;
 
@@ -100,5 +100,5 @@ export const LogoutIcon = styled(LogoutSVG)`
   width: 20px;
   height: 20px;
 
-  stroke: ${(p) => p.theme.colors.accent};
+  stroke: ${p => p.theme.colors.accent};
 `;

@@ -1,21 +1,21 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from '@/hooks/useAuth';
 
-import { ToastMessage } from "@/components/common/ToastMessage/ToastMessage.styled";
-import * as SC from "./UserMenu.styled";
+import { ToastMessage } from '@/components/common/ToastMessage/ToastMessage.styled';
+import * as SC from './UserMenu.styled';
 
 export const UserMenu = ({ mobileMenuOpen, onCloseMobileMenu }) => {
   const {
     currentUser: { displayName },
-    logOut,
+    logOut
   } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
-    setIsUserDropdownOpen((prevState) => !prevState);
+    setIsUserDropdownOpen(prevState => !prevState);
   };
 
   const handleLogout = async () => {
@@ -27,7 +27,7 @@ export const UserMenu = ({ mobileMenuOpen, onCloseMobileMenu }) => {
       await toast.promise(logoutPromise, {
         loading: <ToastMessage>Logging out...</ToastMessage>,
         success: <ToastMessage>Logout successful!</ToastMessage>,
-        error: <ToastMessage>Logout failed. Try again.</ToastMessage>,
+        error: <ToastMessage>Logout failed. Try again.</ToastMessage>
       });
       onCloseMobileMenu();
     } catch (error) {

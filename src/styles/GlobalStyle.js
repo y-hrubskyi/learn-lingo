@@ -1,10 +1,10 @@
-import { createGlobalStyle } from "styled-components";
-import "modern-normalize";
+import { createGlobalStyle } from 'styled-components';
+import 'modern-normalize';
 
-import RobotoRegularWOFF2 from "@/assets/fonts/Roboto-Regular.woff2";
-import RobotoItalicWOFF2 from "@/assets/fonts/Roboto-Italic.woff2";
-import RobotoMediumWOFF2 from "@/assets/fonts/Roboto-Medium.woff2";
-import RobotoBoldWOFF2 from "@/assets/fonts/Roboto-Bold.woff2";
+import RobotoRegularWOFF2 from '@/assets/fonts/Roboto-Regular.woff2';
+import RobotoItalicWOFF2 from '@/assets/fonts/Roboto-Italic.woff2';
+import RobotoMediumWOFF2 from '@/assets/fonts/Roboto-Medium.woff2';
+import RobotoBoldWOFF2 from '@/assets/fonts/Roboto-Bold.woff2';
 
 export const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -39,8 +39,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: ${(p) =>
-      p.theme.colors[p.locationPath === "/" ? "primaryBg" : "secondaryBg"]};
+    background-color: ${p =>
+      p.theme.colors[p.locationPath === '/' ? 'primaryBg' : 'secondaryBg']};
   }
 
   h1,

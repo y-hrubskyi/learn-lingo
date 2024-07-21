@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from '@/hooks/useAuth';
 
-import { Navigation } from "@/components/Navigation/Navigation";
-import { AuthNav } from "@/components/AuthNav/AuthNav";
-import { UserMenu } from "@/components/UserMenu/UserMenu";
-import * as SC from "./Header.styled";
+import { Navigation } from '@/components/Navigation/Navigation';
+import { AuthNav } from '@/components/AuthNav/AuthNav';
+import { UserMenu } from '@/components/UserMenu/UserMenu';
+import * as SC from './Header.styled';
 
 export const Header = () => {
   const { currentUser } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
   }, [isMobileMenuOpen]);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen((prevState) => !prevState);
+    setIsMobileMenuOpen(prevState => !prevState);
   };
 
   const closeMobileMenu = () => {
@@ -36,7 +36,7 @@ export const Header = () => {
         <SC.MobileMenuBtn
           type="button"
           onClick={toggleMobileMenu}
-          aria-label={`${isMobileMenuOpen ? "hide" : "show"} mobile menu`}
+          aria-label={`${isMobileMenuOpen ? 'hide' : 'show'} mobile menu`}
         >
           {isMobileMenuOpen ? <SC.CrossIcon /> : <SC.MobileMenuIcon />}
         </SC.MobileMenuBtn>

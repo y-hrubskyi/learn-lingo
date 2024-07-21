@@ -1,6 +1,6 @@
-import Select from "react-select";
+import Select from 'react-select';
 
-import { selectStyles } from "./SelectBase.styled";
+import { selectStyles } from './SelectBase.styled';
 
 export const SelectBase = ({
   name,
@@ -8,7 +8,7 @@ export const SelectBase = ({
   options,
   controlWidth,
   menuHeight,
-  onChange,
+  onChange
 }) => {
   return (
     <Select
@@ -17,17 +17,17 @@ export const SelectBase = ({
         ...selectStyles,
         control: (baseStyles, state) => ({
           ...selectStyles.control(baseStyles, state),
-          width: controlWidth,
+          width: controlWidth
         }),
         menu: (baseStyles, state) => ({
           ...selectStyles.menu(baseStyles, state),
-          height: menuHeight,
-        }),
+          height: menuHeight
+        })
       }}
       options={options}
       isClearable={true}
       placeholder={placeholder}
-      onChange={(selected) => onChange(selected?.value || "")}
+      onChange={selected => onChange(selected?.value || '')}
     />
   );
 };

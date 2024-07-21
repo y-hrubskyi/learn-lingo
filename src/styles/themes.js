@@ -1,50 +1,50 @@
 export const baseTheme = Object.freeze({
   colors: {
-    primaryBg: "#fff",
-    secondaryBg: "#f8f8f8",
+    primaryBg: '#fff',
+    secondaryBg: '#f8f8f8',
     primary: (alpha = 1) => `rgba(18, 20, 23, ${alpha})`,
-    label: "#8a8a89",
-    green: "#38cd3e",
-    star: "#ffc531",
+    label: '#8a8a89',
+    green: '#38cd3e',
+    star: '#ffc531'
   },
   radii: {
-    btn: "12px",
-    input: "12px",
-    select: "14px",
-    card: "24px",
-    modal: "30px",
-    avatar: "100px",
+    btn: '12px',
+    input: '12px',
+    select: '14px',
+    card: '24px',
+    modal: '30px',
+    avatar: '100px'
   },
-  transition: (prop = "") => `${prop} 250ms linear`,
-  spacing: (value) => `${value * 4}px`,
+  transition: (prop = '') => `${prop} 250ms linear`,
+  spacing: value => `${value * 4}px`
 });
 
 export const Themes = Object.freeze({
   YELLOW: {
-    name: "yellow",
-    accent: "#f4c550",
-    hover: "#fbe9ba",
+    name: 'yellow',
+    accent: '#f4c550',
+    hover: '#fbe9ba'
   },
   GREEN: {
-    name: "green",
-    accent: "#9fbaae",
-    hover: "#cbded3",
+    name: 'green',
+    accent: '#9fbaae',
+    hover: '#cbded3'
   },
   BLUE: {
-    name: "blue",
-    accent: "#9fb7ce",
-    hover: "#bfd6ea",
+    name: 'blue',
+    accent: '#9fb7ce',
+    hover: '#bfd6ea'
   },
   CORAL: {
-    name: "coral",
-    accent: "#e0a39a",
-    hover: "#f2c0bd",
+    name: 'coral',
+    accent: '#e0a39a',
+    hover: '#f2c0bd'
   },
   PEACH: {
-    name: "peach",
-    accent: "#f0aa8d",
-    hover: "#f4c8ba",
-  },
+    name: 'peach',
+    accent: '#f0aa8d',
+    hover: '#f4c8ba'
+  }
 });
 
 const yellowTheme = {
@@ -53,8 +53,8 @@ const yellowTheme = {
   colors: {
     ...baseTheme.colors,
     accent: Themes.YELLOW.accent,
-    hover: Themes.YELLOW.hover,
-  },
+    hover: Themes.YELLOW.hover
+  }
 };
 
 const greenTheme = {
@@ -63,8 +63,8 @@ const greenTheme = {
   colors: {
     ...baseTheme.colors,
     accent: Themes.GREEN.accent,
-    hover: Themes.GREEN.hover,
-  },
+    hover: Themes.GREEN.hover
+  }
 };
 
 const blueTheme = {
@@ -73,8 +73,8 @@ const blueTheme = {
   colors: {
     ...baseTheme.colors,
     accent: Themes.BLUE.accent,
-    hover: Themes.BLUE.hover,
-  },
+    hover: Themes.BLUE.hover
+  }
 };
 
 const coralTheme = {
@@ -83,8 +83,8 @@ const coralTheme = {
   colors: {
     ...baseTheme.colors,
     accent: Themes.CORAL.accent,
-    hover: Themes.CORAL.hover,
-  },
+    hover: Themes.CORAL.hover
+  }
 };
 
 const peachTheme = {
@@ -93,11 +93,11 @@ const peachTheme = {
   colors: {
     ...baseTheme.colors,
     accent: Themes.PEACH.accent,
-    hover: Themes.PEACH.hover,
-  },
+    hover: Themes.PEACH.hover
+  }
 };
 
-export const getTheme = (themeName) => {
+export const getTheme = themeName => {
   switch (themeName) {
     case Themes.YELLOW.name:
       return yellowTheme;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -19,10 +19,10 @@ export const Modal = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: ${(p) => p.theme.spacing(1)};
-  padding: ${(p) => p.theme.spacing(1)};
+  gap: ${p => p.theme.spacing(1)};
+  padding: ${p => p.theme.spacing(1)};
 
-  background-color: ${(p) => p.theme.colors.primaryBg};
+  background-color: ${p => p.theme.colors.primaryBg};
   border-radius: 8px;
   overflow: auto;
   z-index: 100;
@@ -35,7 +35,7 @@ export const ThemeColor = styled.button`
   height: 32px;
   padding: 0;
 
-  background-color: ${(p) => p["data-theme-color"]};
+  background-color: ${p => p['data-theme-color']};
   border: none;
   border-radius: 8px;
 `;

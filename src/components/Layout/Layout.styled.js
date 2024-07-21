@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import PaletteSVG from "@/assets/icons/palette.svg?react";
+import PaletteSVG from '@/assets/icons/palette.svg?react';
 
 export const Container = styled.div`
   margin: 0 auto;
-  padding-right: ${(p) => p.theme.spacing(5)};
-  padding-left: ${(p) => p.theme.spacing(5)};
+  padding-right: ${p => p.theme.spacing(5)};
+  padding-left: ${p => p.theme.spacing(5)};
 
   @media screen and (min-width: 375px) {
     width: 375px;
@@ -13,14 +13,14 @@ export const Container = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 768px;
-    padding-right: ${(p) => p.theme.spacing(10)};
-    padding-left: ${(p) => p.theme.spacing(10)};
+    padding-right: ${p => p.theme.spacing(10)};
+    padding-left: ${p => p.theme.spacing(10)};
   }
 
   @media screen and (min-width: 1440px) {
     width: 1440px;
-    padding-left: ${(p) => p.theme.spacing(16)};
-    padding-right: ${(p) => p.theme.spacing(16)};
+    padding-left: ${p => p.theme.spacing(16)};
+    padding-right: ${p => p.theme.spacing(16)};
   }
 `;
 

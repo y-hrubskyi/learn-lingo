@@ -1,11 +1,11 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
-import { addToFavorites, removeFromFavorites } from "@/services/firebase";
+import { addToFavorites, removeFromFavorites } from '@/services/firebase';
 
-import { BookModal } from "@/components/BookModal/BookModal";
-import { ToastMessage } from "@/components/common/ToastMessage/ToastMessage.styled";
-import * as SC from "./TeacherItem.styled";
+import { BookModal } from '@/components/BookModal/BookModal';
+import { ToastMessage } from '@/components/common/ToastMessage/ToastMessage.styled';
+import * as SC from './TeacherItem.styled';
 
 const mapListWithSeparator = (arr, separator) =>
   arr.map((item, index, array) =>
@@ -16,7 +16,7 @@ export const TeacherItem = ({
   teacher,
   isFavorite,
   userId,
-  level: selectedLevel,
+  level: selectedLevel
 }) => {
   const [readMore, setReadMore] = useState(false);
   const [isBookOpen, setIsBookOpen] = useState(false);
@@ -34,18 +34,18 @@ export const TeacherItem = ({
       let favoriteActionPromise, loadingMessage, resultMessage;
       if (isFavorite) {
         favoriteActionPromise = removeFromFavorites(userId, teacher.id);
-        loadingMessage = "Removing...";
-        resultMessage = "Removed from favorites";
+        loadingMessage = 'Removing...';
+        resultMessage = 'Removed from favorites';
       } else {
         favoriteActionPromise = addToFavorites(userId, teacher.id);
-        loadingMessage = "Adding...";
-        resultMessage = "Added to favorites";
+        loadingMessage = 'Adding...';
+        resultMessage = 'Added to favorites';
       }
 
       await toast.promise(favoriteActionPromise, {
         loading: <ToastMessage>{loadingMessage}</ToastMessage>,
         success: <ToastMessage>{resultMessage}</ToastMessage>,
-        error: <ToastMessage>Oops.. Something went wrong</ToastMessage>,
+        error: <ToastMessage>Oops.. Something went wrong</ToastMessage>
       });
     } catch (error) {
       // handled in toast.promise
@@ -59,7 +59,7 @@ export const TeacherItem = ({
   };
 
   const toggleBookModal = () => {
-    setIsBookOpen((prevState) => !prevState);
+    setIsBookOpen(prevState => !prevState);
   };
 
   const levels = Object.keys(teacher.levels).sort((a, b) => a.localeCompare(b));
@@ -70,7 +70,7 @@ export const TeacherItem = ({
         type="button"
         onClick={handleFavoriteClick}
         disabled={isFavoriteActionLoading}
-        aria-label={`${isFavorite ? "remove from" : "add to"} favorites`}
+        aria-label={`${isFavorite ? 'remove from' : 'add to'} favorites`}
       >
         <SC.HeartIcon data-is-favorite={isFavorite} />
       </SC.HeartBtn>
@@ -119,7 +119,7 @@ export const TeacherItem = ({
             <SC.Info>
               <SC.Label>Speaks: </SC.Label>
               <SC.LanguageList>
-                {mapListWithSeparator(teacher.languages, ", ")}
+                {mapListWithSeparator(teacher.languages, ', ')}
               </SC.LanguageList>
             </SC.Info>
             <SC.Info>
@@ -128,7 +128,7 @@ export const TeacherItem = ({
             </SC.Info>
             <SC.Info>
               <SC.Label>Conditions: </SC.Label>
-              {mapListWithSeparator(teacher.conditions, " ")}
+              {mapListWithSeparator(teacher.conditions, ' ')}
             </SC.Info>
           </SC.InfoWrapper>
 
@@ -163,7 +163,7 @@ export const TeacherItem = ({
         </div>
 
         <SC.LevelList>
-          {levels.map((level) => (
+          {levels.map(level => (
             <SC.LevelItem
               key={level}
               data-is-filtered={selectedLevel === level}

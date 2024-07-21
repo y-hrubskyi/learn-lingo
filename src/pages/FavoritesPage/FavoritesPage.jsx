@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { useAuth } from "@/hooks/useAuth";
-import { subscribeFavoriteItems } from "@/services/firebase";
+import { useAuth } from '@/hooks/useAuth';
+import { subscribeFavoriteItems } from '@/services/firebase';
 
-import { TeacherList } from "@/components/TeacherList/TeacherList";
-import { Loader } from "@/components/common/Loader/Loader.styled";
-import { Placeholder } from "@/components/common/Placeholder/Placeholder";
-import * as SC from "./FavoritesPage.styled";
+import { TeacherList } from '@/components/TeacherList/TeacherList';
+import { Loader } from '@/components/common/Loader/Loader.styled';
+import { Placeholder } from '@/components/common/Placeholder/Placeholder';
+import * as SC from './FavoritesPage.styled';
 
 const FavoritesPage = () => {
   const { currentUser } = useAuth();

@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import NoDataPlaceholderImg from "@/assets/img/placeholders/no-data.webp";
-import EmptyFavoritesPlaceholderImg from "@/assets/img/placeholders/empty-favorites.webp";
-import ErrorPlaceholderImg from "@/assets/img/placeholders/error.webp";
+import NoDataPlaceholderImg from '@/assets/img/placeholders/no-data.webp';
+import EmptyFavoritesPlaceholderImg from '@/assets/img/placeholders/empty-favorites.webp';
+import ErrorPlaceholderImg from '@/assets/img/placeholders/error.webp';
 
-const getPlaceholderImg = (props) => {
-  switch (props["data-type"]) {
-    case "no-data":
+const getPlaceholderImg = props => {
+  switch (props['data-type']) {
+    case 'no-data':
       return NoDataPlaceholderImg;
-    case "empty-favorites":
+    case 'empty-favorites':
       return EmptyFavoritesPlaceholderImg;
-    case "error":
+    case 'error':
       return ErrorPlaceholderImg;
   }
 };
@@ -19,7 +19,7 @@ export const PlaceholderWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${(p) => p.theme.spacing(4)};
+  gap: ${p => p.theme.spacing(4)};
 `;
 
 export const PlaceholderImg = styled.div`
@@ -30,7 +30,7 @@ export const PlaceholderImg = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border-radius: ${(p) => p.theme.radii.card};
+  border-radius: ${p => p.theme.radii.card};
 
   @media screen and (min-width: 1440px) {
     width: 600px;
@@ -40,16 +40,16 @@ export const PlaceholderImg = styled.div`
 
 export const PlaceholderText = styled.p`
   max-width: 320px;
-  padding: ${(p) => p.theme.spacing(4)};
+  padding: ${p => p.theme.spacing(4)};
 
   font-size: 18px;
   font-weight: 500;
   line-height: 1.5;
   text-align: center;
-  color: ${(p) => p.theme.colors.primary()};
+  color: ${p => p.theme.colors.primary()};
 
-  background-color: ${(p) => p.theme.colors.primaryBg};
-  border-radius: ${(p) => p.theme.radii.card};
+  background-color: ${p => p.theme.colors.primaryBg};
+  border-radius: ${p => p.theme.radii.card};
 
   @media screen and (min-width: 1440px) {
     max-width: 600px;

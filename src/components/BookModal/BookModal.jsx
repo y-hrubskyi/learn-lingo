@@ -1,20 +1,20 @@
-import { bookSchema } from "@/constants/validation/bookSchema";
-import { reasons } from "@/constants/reasons";
+import { bookSchema } from '@/constants/validation/bookSchema';
+import { reasons } from '@/constants/reasons';
 
-import { ModalBase } from "@/components/common/ModalBase/ModalBase";
-import { BaseModalTitle } from "@/components/common/ModalBase/ModalBase.styled";
-import { FormBase } from "@/components/common/FormBase/FormBase";
-import { FieldsWrapper } from "@/components/common/FormBase/FormBase.styled";
-import { FormField } from "@/components/common/FormField/FormField";
-import { SubmitBtn } from "@/components/common/SubmitBtn/SubmitBtn";
+import { ModalBase } from '@/components/common/ModalBase/ModalBase';
+import { BaseModalTitle } from '@/components/common/ModalBase/ModalBase.styled';
+import { FormBase } from '@/components/common/FormBase/FormBase';
+import { FieldsWrapper } from '@/components/common/FormBase/FormBase.styled';
+import { FormField } from '@/components/common/FormField/FormField';
+import { SubmitBtn } from '@/components/common/SubmitBtn/SubmitBtn';
 
-import * as SC from "./BookModal.styled.js";
+import * as SC from './BookModal.styled.js';
 
 const initialValues = {
-  fullname: "",
-  email: "",
-  phone: "",
-  reason: reasons[0].value,
+  fullname: '',
+  email: '',
+  phone: '',
+  reason: reasons[0].value
 };
 
 export const BookModal = ({
@@ -22,7 +22,7 @@ export const BookModal = ({
   onClose,
   teacherName,
   teacherSurname,
-  teacherAvatar,
+  teacherAvatar
 }) => {
   return (
     <ModalBase isOpen={isOpen} onClose={onClose} width="600px">
@@ -53,7 +53,7 @@ export const BookModal = ({
             What is your main reason for learning English?
           </SC.ReasonRadioLegend>
           <SC.ReasonRadioGroup role="group" aria-labelledby="reason-group">
-            {reasons.map((reason) => (
+            {reasons.map(reason => (
               <SC.ReasonRadioLabel key={reason.value}>
                 <SC.ReasonRadioField
                   type="radio"
