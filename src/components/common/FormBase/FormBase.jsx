@@ -1,12 +1,12 @@
-import { Formik } from "formik";
+import { Formik } from 'formik';
 
-import * as SC from "./FormBase.styled";
+import * as SC from './FormBase.styled';
 
 export const FormBase = ({
   initialValues,
   onSubmit,
   validationSchema,
-  children,
+  children
 }) => {
   return (
     <Formik

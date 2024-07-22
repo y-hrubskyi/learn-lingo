@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import CrossSVG from "@/assets/icons/cross.svg?react";
+import CrossSVG from '@/assets/icons/cross.svg?react';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -10,7 +10,7 @@ export const Backdrop = styled.div`
   width: 100%;
   height: 100%;
 
-  background-color: ${(p) => p.theme.colors.primary(0.5)};
+  background-color: ${p => p.theme.colors.primary(0.5)};
   overflow: auto;
   z-index: 9999;
 `;
@@ -23,10 +23,10 @@ export const Modal = styled.div`
 
   min-width: 320px;
   max-height: 90%;
-  padding: ${(p) => p.theme.spacing(8)};
+  padding: ${p => p.theme.spacing(8)};
 
-  background-color: ${(p) => p.theme.colors.primaryBg};
-  border-radius: ${(p) => p.theme.radii.modal};
+  background-color: ${p => p.theme.colors.primaryBg};
+  border-radius: ${p => p.theme.radii.modal};
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -41,17 +41,17 @@ export const Modal = styled.div`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: ${(p) => p.theme.colors.primary(0.2)};
+    background: ${p => p.theme.colors.primary(0.2)};
   }
 
   @media screen and (min-width: 768px) {
-    width: ${(p) => parseInt(p["data-width"]) - 100 + "px"};
-    padding: ${(p) => p.theme.spacing(10)};
+    width: ${p => parseInt(p['data-width']) - 100 + 'px'};
+    padding: ${p => p.theme.spacing(10)};
   }
 
   @media screen and (min-width: 1440px) {
-    width: ${(p) => p["data-width"]};
-    padding: ${(p) => p.theme.spacing(16)};
+    width: ${p => p['data-width']};
+    padding: ${p => p.theme.spacing(16)};
   }
 `;
 
@@ -65,14 +65,14 @@ export const CloseBtn = styled.button`
   height: 28px;
   padding: 0;
 
-  color: ${(p) => p.theme.colors.primary()};
+  color: ${p => p.theme.colors.primary()};
 
   background-color: transparent;
   border: none;
 
   &:hover,
   &:focus {
-    color: ${(p) => p.theme.colors.hover};
+    color: ${p => p.theme.colors.hover};
   }
 
   @media screen and (min-width: 768px) {
@@ -89,17 +89,17 @@ export const CloseBtn = styled.button`
 export const CrossIcon = styled(CrossSVG)`
   stroke: currentColor;
 
-  transition: ${(p) => p.theme.transition("color")};
+  transition: ${p => p.theme.transition('color')};
 `;
 
 export const BaseModalTitle = styled.p`
-  margin-bottom: ${(p) => p.theme.spacing(5)};
+  margin-bottom: ${p => p.theme.spacing(5)};
 
   font-weight: 500;
   font-size: 28px;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: ${(p) => p.theme.colors.primary()};
+  color: ${p => p.theme.colors.primary()};
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
@@ -111,14 +111,14 @@ export const BaseModalTitle = styled.p`
 `;
 
 export const BaseModalDescription = styled.p`
-  margin-bottom: ${(p) => p.theme.spacing(8)};
+  margin-bottom: ${p => p.theme.spacing(8)};
 
   font-weight: 400;
   font-size: 16px;
   line-height: 1.375;
-  color: ${(p) => p.theme.colors.primary(0.8)};
+  color: ${p => p.theme.colors.primary(0.8)};
 
   @media screen and (min-width: 1440px) {
-    margin-bottom: ${(p) => p.theme.spacing(10)};
+    margin-bottom: ${p => p.theme.spacing(10)};
   }
 `;

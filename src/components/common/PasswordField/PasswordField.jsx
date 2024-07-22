@@ -1,13 +1,13 @@
 import {
   FieldWrapper,
   Field,
-  ErrorMessage,
-} from "@/components/common/FormField/FormField.styled";
-import * as SC from "./PasswordField.styled";
+  ErrorMessage
+} from '@/components/common/FormField/FormField.styled';
+import * as SC from './PasswordField.styled';
 
 const eyeMap = {
   true: <SC.EyeOnIcon />,
-  false: <SC.EyeOffIcon />,
+  false: <SC.EyeOffIcon />
 };
 
 export const PasswordField = ({
@@ -15,7 +15,7 @@ export const PasswordField = ({
   type,
   name,
   passwordShown,
-  onTogglePasswordShown,
+  onTogglePasswordShown
 }) => {
   return (
     <FieldWrapper>
@@ -23,7 +23,7 @@ export const PasswordField = ({
       <SC.EyeBtn
         type="button"
         onClick={onTogglePasswordShown}
-        aria-label={`${passwordShown ? "hide" : "show"} password`}
+        aria-label={`${passwordShown ? 'hide' : 'show'} password`}
       >
         {eyeMap[passwordShown]}
       </SC.EyeBtn>

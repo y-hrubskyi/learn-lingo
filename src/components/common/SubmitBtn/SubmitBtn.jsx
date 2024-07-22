@@ -1,4 +1,4 @@
-import * as SC from "./SubmitBtn.styled";
+import * as SC from './SubmitBtn.styled';
 
 export const SubmitBtn = ({ children, isLoading }) => {
   return (

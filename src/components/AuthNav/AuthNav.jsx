@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { RegisterModal } from "@/components/RegisterModal/RegisterModal";
-import { LoginModal } from "@/components/LoginModal/LoginModal";
-import * as SC from "./AuthNav.styled";
+import { RegisterModal } from '@/components/RegisterModal/RegisterModal';
+import { LoginModal } from '@/components/LoginModal/LoginModal';
+import * as SC from './AuthNav.styled';
 
 export const AuthNav = ({ mobileMenuOpen, onCloseMobileMenu }) => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   const toggleLoginModal = () => {
-    setIsLoginOpen((prevState) => !prevState);
+    setIsLoginOpen(prevState => !prevState);
   };
 
   const toggleRegisterModal = () => {
-    setIsRegisterOpen((prevState) => !prevState);
+    setIsRegisterOpen(prevState => !prevState);
   };
 
   return (

@@ -1,13 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile,
-} from "firebase/auth";
+  updateProfile
+} from 'firebase/auth';
 
-import { auth } from "@/config/firebase";
+import { auth } from '@/config/firebase';
 
 export const AuthContext = createContext();
 
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const updateUser = async (data) => {
+  const updateUser = async data => {
     await updateProfile(auth.currentUser, data);
     setCurrentUser({ ...auth.currentUser });
   };
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     setIsRefreshing(true);
 
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
       setCurrentUser(user);
       setIsRefreshing(false);
     });
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     signUp,
     logIn,
     logOut,
-    updateUser,
+    updateUser
   };
 
   return (

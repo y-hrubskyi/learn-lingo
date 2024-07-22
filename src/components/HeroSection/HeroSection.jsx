@@ -1,11 +1,11 @@
-import * as SC from "./HeroSection.styled";
+import * as SC from './HeroSection.styled';
 
 export const HeroSection = () => {
   return (
     <SC.HeroSection>
       <SC.LeftWrapper>
         <SC.HeroTitle>
-          Unlock your potential with the best{" "}
+          Unlock your potential with the best{' '}
           <SC.AccentText>language</SC.AccentText> tutors
         </SC.HeroTitle>
         <SC.HeroDescription>

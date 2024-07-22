@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
-import { getTeachers } from "@/services/firebase";
+import { getTeachers } from '@/services/firebase';
 
-import { SearchBar } from "@/components/SearchBar/SearchBar";
-import { TeacherList } from "@/components/TeacherList/TeacherList";
-import { Loader } from "@/components/common/Loader/Loader.styled";
-import { Placeholder } from "@/components/common/Placeholder/Placeholder";
-import * as SC from "./TeachersPage.styled";
+import { SearchBar } from '@/components/SearchBar/SearchBar';
+import { TeacherList } from '@/components/TeacherList/TeacherList';
+import { Loader } from '@/components/common/Loader/Loader.styled';
+import { Placeholder } from '@/components/common/Placeholder/Placeholder';
+import * as SC from './TeachersPage.styled';
 
 const TeachersPage = () => {
   const [teachers, setTeachers] = useState([]);
@@ -15,9 +15,9 @@ const TeachersPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const lastVisible = useRef();
-  const [language, setLanguage] = useState("");
-  const [level, setLevel] = useState("");
-  const [price, setPrice] = useState("");
+  const [language, setLanguage] = useState('');
+  const [level, setLevel] = useState('');
+  const [price, setPrice] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -28,14 +28,14 @@ const TeachersPage = () => {
         const filters = { language, level, price };
         const data = await getTeachers(lastVisible.current, filters);
 
-        const teachers = data.map((doc) => ({ ...doc.data(), id: doc.id }));
+        const teachers = data.map(doc => ({ ...doc.data(), id: doc.id }));
         const loadMore = teachers.length >= 4;
 
         if (data.length) {
           lastVisible.current = data[data.length - 1];
         }
 
-        setTeachers((prevState) => [...prevState, ...teachers]);
+        setTeachers(prevState => [...prevState, ...teachers]);
         setLoadMore(loadMore);
       } catch (error) {
         setError(error.message);
@@ -45,8 +45,8 @@ const TeachersPage = () => {
     })();
   }, [page, language, level, price]);
 
-  const updateFilter = (setFilter) => {
-    return (value) => {
+  const updateFilter = setFilter => {
+    return value => {
       setFilter(value);
       setTeachers([]);
       setPage(1);
@@ -56,7 +56,7 @@ const TeachersPage = () => {
   };
 
   const handleLoadMore = () => {
-    setPage((prevState) => prevState + 1);
+    setPage(prevState => prevState + 1);
   };
 
   const listIsEmpty = teachers.length === 0;
@@ -68,9 +68,9 @@ const TeachersPage = () => {
   return (
     <SC.PageWrapper>
       <SearchBar
-        setLanguage={(value) => updateFilter(setLanguage)(value)}
-        setLevel={(value) => updateFilter(setLevel)(value)}
-        setPrice={(value) => updateFilter(setPrice)(value)}
+        setLanguage={value => updateFilter(setLanguage)(value)}
+        setLevel={value => updateFilter(setLevel)(value)}
+        setPrice={value => updateFilter(setPrice)(value)}
       />
       {showList && <TeacherList teachers={teachers} level={level} />}
       {showLoadMore && (

@@ -1,11 +1,11 @@
-import { Themes } from "@/styles/themes";
+import { Themes } from '@/styles/themes';
 
-const storageKey = "theme";
+const storageKey = 'theme';
 
 export const getInitialTheme = () => {
   return JSON.parse(localStorage.getItem(storageKey)) ?? Themes.YELLOW.name;
 };
 
-export const saveTheme = (themeName) => {
+export const saveTheme = themeName => {
   localStorage.setItem(storageKey, JSON.stringify(themeName));
 };

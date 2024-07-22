@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ToastMessage = styled.p`
   font-weight: 700;

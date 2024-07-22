@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { NavLink as Link } from "react-router-dom";
+import styled from 'styled-components';
+import { NavLink as Link } from 'react-router-dom';
 
 export const Navigation = styled.nav`
   @media screen and (max-width: 767px) {
     position: relative;
-    display: ${(p) => (p["data-mobile-menu-open"] ? "block" : "none")};
+    display: ${p => (p['data-mobile-menu-open'] ? 'block' : 'none')};
     z-index: 999;
   }
 `;
@@ -12,7 +12,7 @@ export const Navigation = styled.nav`
 export const NavList = styled.ul`
   display: flex;
   justify-content: center;
-  gap: ${(p) => p.theme.spacing(2)};
+  gap: ${p => p.theme.spacing(2)};
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
@@ -36,16 +36,16 @@ export const NavLink = styled(Link)`
   font-size: 16px;
   line-height: 1.25;
   text-decoration: none;
-  color: ${(p) => p.theme.colors.primary()};
+  color: ${p => p.theme.colors.primary()};
 
-  border: 1px solid ${(p) => p.theme.colors.accent};
-  border-radius: ${(p) => p.theme.radii.btn};
+  border: 1px solid ${p => p.theme.colors.accent};
+  border-radius: ${p => p.theme.radii.btn};
 
-  transition: ${(p) => p.theme.transition("background-color")};
+  transition: ${p => p.theme.transition('background-color')};
 
   &.active,
   &:hover,
   &:focus {
-    background-color: ${(p) => p.theme.colors.accent};
+    background-color: ${p => p.theme.colors.accent};
   }
 `;

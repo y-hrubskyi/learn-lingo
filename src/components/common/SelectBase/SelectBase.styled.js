@@ -1,68 +1,68 @@
-import { baseTheme } from "@/styles/themes";
+import { baseTheme } from '@/styles/themes';
 
 export const selectStyles = {
   control: (baseStyles, state) => ({
     ...baseStyles,
     padding: `${baseTheme.spacing(3.5)} ${baseTheme.spacing(4.5)}`,
     borderRadius: baseTheme.radii.input,
-    cursor: "pointer",
-    border: "none",
-    boxShadow: "none",
+    cursor: 'pointer',
+    border: 'none',
+    boxShadow: 'none',
     backgroundColor: baseTheme.colors.primaryBg,
-    "& .css-tj5bde-Svg": {
-      transform: state.menuIsOpen && "rotate(180deg)",
-    },
+    '& .css-tj5bde-Svg': {
+      transform: state.menuIsOpen && 'rotate(180deg)'
+    }
   }),
-  valueContainer: (baseStyles) => ({
+  valueContainer: baseStyles => ({
     ...baseStyles,
     padding: 0,
     fontSize: 18,
     fontWeight: 500,
     lineHeight: 1.11111,
-    color: baseTheme.colors.primary(),
+    color: baseTheme.colors.primary()
   }),
-  placeholder: (baseStyles) => ({
+  placeholder: baseStyles => ({
     ...baseStyles,
     marginLeft: 0,
     marginRight: 0,
-    color: "inherit",
+    color: 'inherit'
   }),
-  singleValue: (baseStyles) => ({
+  singleValue: baseStyles => ({
     ...baseStyles,
     marginLeft: 0,
     marginRight: 0,
-    color: "inherit",
+    color: 'inherit'
   }),
-  input: (baseStyles) => ({
+  input: baseStyles => ({
     ...baseStyles,
     margin: 0,
     paddingTop: 0,
-    paddingBottom: 0,
+    paddingBottom: 0
   }),
   indicatorSeparator: () => ({
-    display: "none",
+    display: 'none'
   }),
-  clearIndicator: (baseStyles) => ({
+  clearIndicator: baseStyles => ({
     ...baseStyles,
     padding: 0,
     color: baseTheme.colors.primary(0.25),
-    transition: baseTheme.transition("color"),
-    "&:hover": {
-      color: baseTheme.colors.primary(),
-    },
+    transition: baseTheme.transition('color'),
+    '&:hover': {
+      color: baseTheme.colors.primary()
+    }
   }),
-  dropdownIndicator: (baseStyles) => ({
+  dropdownIndicator: baseStyles => ({
     ...baseStyles,
     padding: 0,
     color: baseTheme.colors.primary(),
-    "&:hover": {
-      color: baseTheme.colors.primary(),
+    '&:hover': {
+      color: baseTheme.colors.primary()
     },
-    "& .css-tj5bde-Svg": {
-      transition: baseTheme.transition("transform"),
-    },
+    '& .css-tj5bde-Svg': {
+      transition: baseTheme.transition('transform')
+    }
   }),
-  menu: (baseStyles) => ({
+  menu: baseStyles => ({
     ...baseStyles,
     marginTop: baseTheme.spacing(1),
     marginBottom: 0,
@@ -72,22 +72,22 @@ export const selectStyles = {
     zIndex: 10,
     backgroundColor: baseTheme.colors.primaryBg,
     borderRadius: baseTheme.radii.select,
-    boxShadow: "none",
-    border: `1px solid ${baseTheme.colors.primary(0.05)}`,
+    boxShadow: 'none',
+    border: `1px solid ${baseTheme.colors.primary(0.05)}`
   }),
-  menuList: (baseStyles) => ({
+  menuList: baseStyles => ({
     ...baseStyles,
-    height: "100%",
-    "&::-webkit-scrollbar": {
-      width: 8,
+    height: '100%',
+    '&::-webkit-scrollbar': {
+      width: 8
     },
-    "&::-webkit-scrollbar-track": {
-      background: "transparent",
+    '&::-webkit-scrollbar-track': {
+      background: 'transparent'
     },
-    "&::-webkit-scrollbar-thumb": {
+    '&::-webkit-scrollbar-thumb': {
       borderRadius: 10,
-      background: baseTheme.colors.primary(0.05),
-    },
+      background: baseTheme.colors.primary(0.05)
+    }
   }),
   option: (baseStyles, state) => ({
     ...baseStyles,
@@ -99,14 +99,14 @@ export const selectStyles = {
     fontWeight: 500,
     lineHeight: 1.1111,
     color: baseTheme.colors.primary(state.isSelected ? 1 : 0.2),
-    cursor: "pointer",
-    backgroundColor: "transparent",
-    transition: baseTheme.transition("color"),
-    "&:hover": {
-      color: baseTheme.colors.primary(),
+    cursor: 'pointer',
+    backgroundColor: 'transparent',
+    transition: baseTheme.transition('color'),
+    '&:hover': {
+      color: baseTheme.colors.primary()
     },
-    "&:active": {
-      backgroundColor: "transparent",
-    },
-  }),
+    '&:active': {
+      backgroundColor: 'transparent'
+    }
+  })
 };

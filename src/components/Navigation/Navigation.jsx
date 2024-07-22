@@ -1,6 +1,6 @@
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from '@/hooks/useAuth';
 
-import * as SC from "./Navigation.styled";
+import * as SC from './Navigation.styled';
 
 export const Navigation = ({ mobileMenuOpen, onCloseMobileMenu }) => {
   const { currentUser } = useAuth();

@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import EyeOnSVG from "@/assets/icons/eye-on.svg?react";
-import EyeOffSVG from "@/assets/icons/eye-off.svg?react";
+import EyeOnSVG from '@/assets/icons/eye-on.svg?react';
+import EyeOffSVG from '@/assets/icons/eye-off.svg?react';
 
 export const EyeBtn = styled.button`
   position: absolute;
@@ -12,16 +12,16 @@ export const EyeBtn = styled.button`
   height: 20px;
   padding: 0;
 
-  color: ${(p) => p.theme.colors.primary()};
+  color: ${p => p.theme.colors.primary()};
 
   background-color: transparent;
   border: none;
 
-  transition: ${(p) => p.theme.transition("color")};
+  transition: ${p => p.theme.transition('color')};
 
   &:hover,
   &:focus {
-    color: ${(p) => p.theme.colors.accent};
+    color: ${p => p.theme.colors.accent};
   }
 
   @media screen and (min-width: 1440px) {

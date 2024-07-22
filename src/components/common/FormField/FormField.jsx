@@ -1,4 +1,4 @@
-import * as SC from "./FormField.styled";
+import * as SC from './FormField.styled';
 
 export const FormField = ({ placeholder, type, name }) => {
   return (
