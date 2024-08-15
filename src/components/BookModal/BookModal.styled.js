@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
 
-import { BaseModalDescription } from '@/components/common/ModalBase/ModalBase.styled';
+import { BaseModalDescription } from '~/components/common/ModalBase/ModalBase.styled';
 
 export const BookModalDescription = styled(BaseModalDescription)`
   margin-bottom: ${p => p.theme.spacing(5)};

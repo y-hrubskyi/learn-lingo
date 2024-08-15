@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import PaletteSVG from '@/assets/icons/palette.svg?react';
+import PaletteSVG from '~/assets/icons/palette.svg?react';
 
 export const Container = styled.div`
   margin: 0 auto;

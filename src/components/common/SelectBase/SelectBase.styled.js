@@ -1,4 +1,4 @@
-import { baseTheme } from '@/styles/themes';
+import { baseTheme } from '~/styles/themes';
 
 export const selectStyles = {
   control: (baseStyles, state) => ({

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import NoDataPlaceholderImg from '@/assets/img/placeholders/no-data.webp';
-import EmptyFavoritesPlaceholderImg from '@/assets/img/placeholders/empty-favorites.webp';
-import ErrorPlaceholderImg from '@/assets/img/placeholders/error.webp';
+import NoDataPlaceholderImg from '~/assets/img/placeholders/no-data.webp';
+import EmptyFavoritesPlaceholderImg from '~/assets/img/placeholders/empty-favorites.webp';
+import ErrorPlaceholderImg from '~/assets/img/placeholders/error.webp';
 
 const getPlaceholderImg = props => {
   switch (props['data-type']) {

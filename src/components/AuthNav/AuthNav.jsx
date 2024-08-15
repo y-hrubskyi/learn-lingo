@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import { RegisterModal } from '@/components/RegisterModal/RegisterModal';
-import { LoginModal } from '@/components/LoginModal/LoginModal';
+import { RegisterModal } from '~/components/RegisterModal/RegisterModal';
+import { LoginModal } from '~/components/LoginModal/LoginModal';
 import * as SC from './AuthNav.styled';
 
 export const AuthNav = ({ mobileMenuOpen, onCloseMobileMenu }) => {

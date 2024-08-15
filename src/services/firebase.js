@@ -13,7 +13,7 @@ import {
   where
 } from 'firebase/firestore';
 
-import { db } from '@/config/firebase';
+import { db } from '~/config/firebase';
 
 export const getTeachers = async (lastDoc, filters) => {
   const { language, level, price } = filters;

@@ -7,7 +7,7 @@ import {
   updateProfile
 } from 'firebase/auth';
 
-import { auth } from '@/config/firebase';
+import { auth } from '~/config/firebase';
 
 export const AuthContext = createContext();
 

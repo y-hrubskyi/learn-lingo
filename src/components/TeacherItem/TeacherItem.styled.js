@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import BookSVG from '@/assets/icons/book.svg?react';
-import StarSVG from '@/assets/icons/star.svg?react';
-import HeartSVG from '@/assets/icons/heart.svg?react';
+import BookSVG from '~/assets/icons/book.svg?react';
+import StarSVG from '~/assets/icons/star.svg?react';
+import HeartSVG from '~/assets/icons/heart.svg?react';
 
 export const TeacherCard = styled.li`
   position: relative;

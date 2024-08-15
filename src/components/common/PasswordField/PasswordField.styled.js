@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import EyeOnSVG from '@/assets/icons/eye-on.svg?react';
-import EyeOffSVG from '@/assets/icons/eye-off.svg?react';
+import EyeOnSVG from '~/assets/icons/eye-on.svg?react';
+import EyeOffSVG from '~/assets/icons/eye-off.svg?react';
 
 export const EyeBtn = styled.button`
   position: absolute;

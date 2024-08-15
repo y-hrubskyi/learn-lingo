@@ -1,4 +1,4 @@
-import { Themes } from '@/styles/themes';
+import { Themes } from '~/styles/themes';
 
 const storageKey = 'theme';
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import LoginSVG from '@/assets/icons/login.svg?react';
+import LoginSVG from '~/assets/icons/login.svg?react';
 
 export const AuthNavWrapper = styled.div`
   display: flex;

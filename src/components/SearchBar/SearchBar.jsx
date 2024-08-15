@@ -2,9 +2,9 @@ import {
   languageOptions,
   levelOptions,
   priceOptions
-} from '@/constants/filters';
+} from '~/constants/filters';
 
-import { SelectBase } from '@/components/common/SelectBase/SelectBase';
+import { SelectBase } from '~/components/common/SelectBase/SelectBase';
 import * as SC from './SearchBar.styled';
 
 export const SearchBar = ({ setLanguage, setLevel, setPrice }) => {

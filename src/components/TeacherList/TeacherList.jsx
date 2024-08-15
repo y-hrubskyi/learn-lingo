@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { useAuth } from '@/hooks/useAuth';
-import { subscribeFavoriteKeys } from '@/services/firebase';
+import { useAuth } from '~/hooks/useAuth';
+import { subscribeFavoriteKeys } from '~/services/firebase';
 
-import { TeacherItem } from '@/components/TeacherItem/TeacherItem';
+import { TeacherItem } from '~/components/TeacherItem/TeacherItem';
 import * as SC from './TeacherList.styled';
 
 export const TeacherList = ({ teachers, level }) => {

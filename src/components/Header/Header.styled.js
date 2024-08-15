@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import LogoSVG from '@/assets/icons/logo.svg?react';
-import MobileMenuSVG from '@/assets/icons/mobile-menu.svg?react';
-import CrossSVG from '@/assets/icons/cross.svg?react';
+import LogoSVG from '~/assets/icons/logo.svg?react';
+import MobileMenuSVG from '~/assets/icons/mobile-menu.svg?react';
+import CrossSVG from '~/assets/icons/cross.svg?react';
 
 export const Header = styled.header`
   display: flex;

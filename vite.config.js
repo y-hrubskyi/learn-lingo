@@ -8,7 +8,7 @@ export default defineConfig({
   base: '/learn-lingo/',
   resolve: {
     alias: {
-      '@': '/src'
+      '~': '/src'
     }
   }
 });

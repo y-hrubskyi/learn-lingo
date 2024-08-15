@@ -1,12 +1,12 @@
-import { bookSchema } from '@/constants/validation/bookSchema';
-import { reasons } from '@/constants/reasons';
+import { bookSchema } from '~/constants/validation/bookSchema';
+import { reasons } from '~/constants/reasons';
 
-import { ModalBase } from '@/components/common/ModalBase/ModalBase';
-import { BaseModalTitle } from '@/components/common/ModalBase/ModalBase.styled';
-import { FormBase } from '@/components/common/FormBase/FormBase';
-import { FieldsWrapper } from '@/components/common/FormBase/FormBase.styled';
-import { FormField } from '@/components/common/FormField/FormField';
-import { SubmitBtn } from '@/components/common/SubmitBtn/SubmitBtn';
+import { ModalBase } from '~/components/common/ModalBase/ModalBase';
+import { BaseModalTitle } from '~/components/common/ModalBase/ModalBase.styled';
+import { FormBase } from '~/components/common/FormBase/FormBase';
+import { FieldsWrapper } from '~/components/common/FormBase/FormBase.styled';
+import { FormField } from '~/components/common/FormField/FormField';
+import { SubmitBtn } from '~/components/common/SubmitBtn/SubmitBtn';
 
 import * as SC from './BookModal.styled.js';
 

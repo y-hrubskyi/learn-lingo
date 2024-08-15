@@ -2,7 +2,7 @@ import {
   FieldWrapper,
   Field,
   ErrorMessage
-} from '@/components/common/FormField/FormField.styled';
+} from '~/components/common/FormField/FormField.styled';
 import * as SC from './PasswordField.styled';
 
 const eyeMap = {

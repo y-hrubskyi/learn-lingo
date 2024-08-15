@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { addToFavorites, removeFromFavorites } from '@/services/firebase';
+import { addToFavorites, removeFromFavorites } from '~/services/firebase';
 
-import { BookModal } from '@/components/BookModal/BookModal';
-import { ToastMessage } from '@/components/common/ToastMessage/ToastMessage.styled';
+import { BookModal } from '~/components/BookModal/BookModal';
+import { ToastMessage } from '~/components/common/ToastMessage/ToastMessage.styled';
 import * as SC from './TeacherItem.styled';
 
 const mapListWithSeparator = (arr, separator) =>

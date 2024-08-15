@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { getTeachers } from '@/services/firebase';
+import { getTeachers } from '~/services/firebase';
 
-import { SearchBar } from '@/components/SearchBar/SearchBar';
-import { TeacherList } from '@/components/TeacherList/TeacherList';
-import { Loader } from '@/components/common/Loader/Loader.styled';
-import { Placeholder } from '@/components/common/Placeholder/Placeholder';
+import { SearchBar } from '~/components/SearchBar/SearchBar';
+import { TeacherList } from '~/components/TeacherList/TeacherList';
+import { Loader } from '~/components/common/Loader/Loader.styled';
+import { Placeholder } from '~/components/common/Placeholder/Placeholder';
 import * as SC from './TeachersPage.styled';
 
 const TeachersPage = () => {

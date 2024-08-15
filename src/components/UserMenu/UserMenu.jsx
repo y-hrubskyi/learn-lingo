@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '~/hooks/useAuth';
 
-import { ToastMessage } from '@/components/common/ToastMessage/ToastMessage.styled';
+import { ToastMessage } from '~/components/common/ToastMessage/ToastMessage.styled';
 import * as SC from './UserMenu.styled';
 
 export const UserMenu = ({ mobileMenuOpen, onCloseMobileMenu }) => {

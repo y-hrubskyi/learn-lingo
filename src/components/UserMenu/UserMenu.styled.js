@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import LogoutSVG from '@/assets/icons/logout.svg?react';
+import LogoutSVG from '~/assets/icons/logout.svg?react';
 
 export const UserMenuWrapper = styled.div`
   display: flex;

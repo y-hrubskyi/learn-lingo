@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-import { reasons } from '@/constants/reasons';
+import { reasons } from '~/constants/reasons';
 
 const reasonsEnum = reasons.map(reason => reason.value);
 

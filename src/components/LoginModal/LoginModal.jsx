@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { useAuth } from '@/hooks/useAuth';
-import { loginSchema } from '@/constants/validation/loginSchema';
+import { useAuth } from '~/hooks/useAuth';
+import { loginSchema } from '~/constants/validation/loginSchema';
 
-import { ModalBase } from '@/components/common/ModalBase/ModalBase';
+import { ModalBase } from '~/components/common/ModalBase/ModalBase';
 import {
   BaseModalTitle,
   BaseModalDescription
-} from '@/components/common/ModalBase/ModalBase.styled';
-import { FormBase } from '@/components/common/FormBase/FormBase';
-import { FieldsWrapper } from '@/components/common/FormBase/FormBase.styled';
-import { FormField } from '@/components/common/FormField/FormField';
-import { PasswordField } from '@/components/common/PasswordField/PasswordField';
-import { SubmitBtn } from '@/components/common/SubmitBtn/SubmitBtn';
-import { ToastMessage } from '@/components/common/ToastMessage/ToastMessage.styled';
+} from '~/components/common/ModalBase/ModalBase.styled';
+import { FormBase } from '~/components/common/FormBase/FormBase';
+import { FieldsWrapper } from '~/components/common/FormBase/FormBase.styled';
+import { FormField } from '~/components/common/FormField/FormField';
+import { PasswordField } from '~/components/common/PasswordField/PasswordField';
+import { SubmitBtn } from '~/components/common/SubmitBtn/SubmitBtn';
+import { ToastMessage } from '~/components/common/ToastMessage/ToastMessage.styled';
 
 const initialValues = {
   email: '',
